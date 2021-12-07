@@ -41,7 +41,7 @@ struct HomeTabItem: View {
             designTypeView()
             requiredRoomView()
             Spacer()
-        }.padding()
+        }.padding(.horizontal)
     }
     
     @ViewBuilder
