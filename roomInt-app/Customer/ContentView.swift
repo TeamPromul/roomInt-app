@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var navBarHidden = false
     var body: some View {
         NavigationView {
             TabView {
-                HomeTabItem()
+                HomeTabItem(navBarHidden: $navBarHidden)
                     .tabItem {
                         Image(systemName: "house")
                         Text("Home")
                     }
                     .navigationBarTitle(Text("Find Your Design"), displayMode: .inline)
+                    .navigationBarHidden(navBarHidden)
+                CatalogTabItem(navBarHidden: $navBarHidden)
+                    .tabItem {
+                        Image(systemName: "book")
+                        Text("Catalog")
+                    }
+                    .navigationBarTitle(Text("Find Your Design"), displayMode: .inline)
+                    .navigationBarHidden(navBarHidden)
             }
         }
     }

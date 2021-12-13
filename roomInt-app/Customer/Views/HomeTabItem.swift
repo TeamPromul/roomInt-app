@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeTabItem: View {
+    @Binding var navBarHidden: Bool
     let columnsForCircle = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -26,6 +27,7 @@ struct HomeTabItem: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3)
                     .scaledToFill()
                 SearchBar()
+                    .padding()
                     .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
             }
             VStack(alignment: .leading) {
@@ -42,6 +44,9 @@ struct HomeTabItem: View {
             requiredRoomView()
             Spacer()
         }.padding(.horizontal)
+            .onAppear {
+                self.navBarHidden = false
+            } 
     }
     
     @ViewBuilder
@@ -98,6 +103,6 @@ struct HomeTabItem: View {
 
 struct HomeTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        HomeTabItem()
+        HomeTabItem(navBarHidden: .constant(false))
     }
 }
