@@ -10,6 +10,8 @@ import SwiftUI
 struct CatalogTabItem: View {
     @State private var mode: Int = 0
     @Binding var navBarHidden: Bool
+    @Binding var navBarTitle: String
+    
     var body: some View {
         VStack(spacing: 20) {
             Picker("Category", selection: $mode) {
@@ -79,6 +81,6 @@ struct CatalogTabItem: View {
 
 struct CatalogTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        CatalogTabItem(navBarHidden: .constant(true))
+        CatalogTabItem(navBarHidden: .constant(true), navBarTitle: .constant(""))
     }
 }

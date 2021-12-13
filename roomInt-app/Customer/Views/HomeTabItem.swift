@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeTabItem: View {
     @Binding var navBarHidden: Bool
+    @Binding var navBarTitle: String
+    @Binding var displayMode: NavigationBarItem.TitleDisplayMode
     let columnsForCircle = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -46,7 +48,9 @@ struct HomeTabItem: View {
         }.padding(.horizontal)
             .onAppear {
                 self.navBarHidden = false
-            } 
+                self.navBarTitle = "Find Your Design"
+                self.displayMode = .inline
+            }
     }
     
     @ViewBuilder
@@ -103,6 +107,6 @@ struct HomeTabItem: View {
 
 struct HomeTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        HomeTabItem(navBarHidden: .constant(false))
+        HomeTabItem(navBarHidden: .constant(false), navBarTitle: .constant("Find Your Design"), displayMode: .constant(.inline))
     }
 }

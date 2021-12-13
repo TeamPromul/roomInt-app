@@ -9,23 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var navBarHidden = false
+    @State private var navBarTitle = "Find Your Design"
+    @State private var displayMode: NavigationBarItem.TitleDisplayMode = .large
     var body: some View {
         NavigationView {
             TabView {
-                HomeTabItem(navBarHidden: $navBarHidden)
+                HomeTabItem(navBarHidden: $navBarHidden, navBarTitle: $navBarTitle, displayMode: $displayMode)
                     .tabItem {
                         Image(systemName: "house")
                         Text("Home")
                     }
-                    .navigationBarTitle(Text("Find Your Design"), displayMode: .inline)
                     .navigationBarHidden(navBarHidden)
-                CatalogTabItem(navBarHidden: $navBarHidden)
+                    .navigationBarTitle(navBarTitle, displayMode: displayMode)
+                CatalogTabItem(navBarHidden: $navBarHidden, navBarTitle: $navBarTitle)
                     .tabItem {
                         Image(systemName: "book")
                         Text("Catalog")
                     }
-                    .navigationBarTitle(Text("Find Your Design"), displayMode: .inline)
                     .navigationBarHidden(navBarHidden)
+//                    .navigationBarTitle(navBarTitle, displayMode: displayMode)
+                Text("Hello")
+                    .tabItem {
+                        Image(systemName: "ellipsis.bubble")
+                        Text("Consult")
+                    }
+                ProfileTabItem(navBarTitle: $navBarTitle, displayMode: $displayMode)
+                    .tabItem {
+                        Image(systemName: "person.circle")
+                        Text("Profile")
+                    }
+                    .navigationBarTitle(navBarTitle, displayMode: displayMode)
             }
         }
     }
