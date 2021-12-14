@@ -49,7 +49,6 @@ struct HomeTabItem: View {
             .onAppear {
                 self.navBarHidden = false
                 self.navBarTitle = "Find Your Design"
-                self.displayMode = .inline
             }
     }
     

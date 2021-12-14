@@ -27,12 +27,11 @@ struct ContentView: View {
                         Text("Catalog")
                     }
                     .navigationBarHidden(navBarHidden)
-//                    .navigationBarTitle(navBarTitle, displayMode: displayMode)
-                Text("Hello")
+                ConsultTabItem(navBarTitle: $navBarTitle, displayMode: $displayMode)
                     .tabItem {
                         Image(systemName: "ellipsis.bubble")
                         Text("Consult")
-                    }
+                    }.navigationBarTitle(navBarTitle, displayMode: displayMode)
                 ProfileTabItem(navBarTitle: $navBarTitle, displayMode: $displayMode)
                     .tabItem {
                         Image(systemName: "person.circle")

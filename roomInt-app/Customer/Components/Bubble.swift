@@ -12,13 +12,16 @@ struct Bubble: View {
         HStack(spacing: 15) {
             Image(systemName: "person")
                 .resizable()
-                .background(Color.blue)
-                .frame(width: 50, height: 50)
+                .foregroundColor(AppColor.primary)
+                .background(AppColor.primary)
+                .frame(width: 65, height: 65)
                 .clipShape(Circle())
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing: 10){
                 Text("Amanda Doe")
                     .font(.system(size: 18, weight: .semibold))
-                
+                Text("amandagmail.com")
+                    .font(.system(size: 15, weight: .regular))
+                    .foregroundColor(.gray)
                     
             }
         }
