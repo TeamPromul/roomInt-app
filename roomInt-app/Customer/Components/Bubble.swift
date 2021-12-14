@@ -12,8 +12,8 @@ struct Bubble: View {
         HStack(spacing: 15) {
             Image(systemName: "person")
                 .resizable()
-                .foregroundColor(AppColor.primary)
-                .background(AppColor.primary)
+                .foregroundColor(Color.primaryColor)
+                .background(Color.primaryColor)
                 .frame(width: 65, height: 65)
                 .clipShape(Circle())
             VStack(alignment: .leading, spacing: 10){

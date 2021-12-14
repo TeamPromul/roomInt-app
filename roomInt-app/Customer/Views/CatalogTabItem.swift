@@ -47,7 +47,7 @@ struct CatalogTabItem: View {
                 .padding(.horizontal)
             Spacer()
         }
-        .background(AppColor.grayBg)
+        .background(Color.grayBg)
     }
     
     @ViewBuilder
@@ -61,7 +61,7 @@ struct CatalogTabItem: View {
                 .padding(.horizontal)
             Spacer()
         }
-        .background(AppColor.grayBg)
+        .background(Color.grayBg)
     }
     
     @ViewBuilder
@@ -75,7 +75,7 @@ struct CatalogTabItem: View {
                 .padding(.horizontal)
             Spacer()
         }
-        .background(AppColor.grayBg)
+        .background(Color.grayBg)
     }
 }
 

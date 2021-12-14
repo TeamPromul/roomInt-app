@@ -20,7 +20,7 @@ struct CatalogCollection: View {
                     .font(.system(size: 14, weight: .bold))
                 Text("The design of a room can increase productivity")
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(AppColor.primary)
+                    .foregroundColor(Color.primaryColor)
                 
             }.padding(.trailing)
         }
