@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct OnBoardingBridge: View {
-    @AppStorage("onboarding") var onboarding = false
+    @ObservedObject var viewModel = OnBoardingViewModel()
     var body: some View {
-        if !onboarding {
+        if !viewModel.onboarding {
             OnBoarding()
                 .overlay(SplashScreen())
-                .onAppear {
-                    onboarding = true
-                }
         } else {
             ContentView()
                 .overlay(SplashScreen())
