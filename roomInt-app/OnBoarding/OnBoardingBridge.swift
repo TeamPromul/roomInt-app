@@ -14,7 +14,7 @@ struct OnBoardingBridge: View {
             OnBoarding()
                 .overlay(SplashScreen())
         } else {
-            ContentView()
+            HomeTabItem()
                 .overlay(SplashScreen())
         }
 

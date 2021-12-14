@@ -65,7 +65,7 @@ struct OnBoarding: View {
                                         .padding(.horizontal, 46)
                                 }.buttonStyle(PrimaryButtonStyle())
                             } else {
-                                NavigationLink(destination: ContentView(), isActive: $isActive) {
+                                NavigationLink(destination: HomeTabItem(), isActive: $isActive) {
                                     Button(action: {
                                         isActive.toggle()
                                         viewModel.onboarding = true
