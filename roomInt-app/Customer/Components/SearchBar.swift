@@ -23,7 +23,6 @@ struct SearchBar: View {
         .frame(height: 40)
         .background(Color.white)
         .cornerRadius(13)
-        .padding()
     }
 }
 

@@ -21,7 +21,7 @@ struct BoxCards: View {
                     .foregroundColor(.white)
                     .padding(10)
                     .frame(width: UIScreen.main.bounds.width/2.5, alignment: .leading)
-                    .background(AppColor.primary)
+                    .background(Color.primaryColor)
             }
         }
         .frame(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.height/4.5)
