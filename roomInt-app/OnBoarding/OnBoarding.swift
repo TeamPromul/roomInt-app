@@ -15,7 +15,7 @@ struct OnBoarding: View {
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
-                let contentSize = proxy.size.width - 36
+                let contentSize = abs(proxy.size.width - 36)
                 ZStack {
                     Color.primaryColor
                     VStack(spacing: 0) {
@@ -31,7 +31,8 @@ struct OnBoarding: View {
                                     .textH5Regular()
                                     .padding(.top, 16)
                             }
-                            .frame(maxWidth: contentSize, minHeight: 20, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: contentSize, minHeight: 20,alignment: .leading)
                         }
 
                         HStack {
@@ -58,7 +59,6 @@ struct OnBoarding: View {
                                 Button(action: {
                                     if index < 2 {
                                         index += 1
-                                        print(index)
                                     }
                                 }) {
                                     Text("Next")
