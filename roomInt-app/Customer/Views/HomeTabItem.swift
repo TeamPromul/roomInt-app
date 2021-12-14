@@ -42,6 +42,7 @@ struct HomeTabItem: View {
             requiredRoomView()
             Spacer()
         }.padding(.horizontal)
+            .navigationBarHidden(true)
     }
     
     @ViewBuilder
