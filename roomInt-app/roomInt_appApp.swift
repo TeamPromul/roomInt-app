@@ -11,7 +11,7 @@ import SwiftUI
 struct roomInt_appApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OnBoardingBridge()
         }
     }
 }
