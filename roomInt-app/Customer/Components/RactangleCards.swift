@@ -19,7 +19,7 @@ struct RactangleCards: View {
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.white)
                     .padding(5)
-                    .background(AppColor.secondary)
+                    .background(Color.secondaryColor)
                     .cornerRadius(10)
                     .padding(10)
                     
@@ -29,7 +29,7 @@ struct RactangleCards: View {
                     .foregroundColor(.white)
                     .padding(10)
                     .frame(width: UIScreen.main.bounds.width/1.2, alignment: .leading)
-                    .background(AppColor.primary)
+                    .background(Color.primaryColor)
             }
         }
         .frame(width: UIScreen.main.bounds.width/1.2, height: UIScreen.main.bounds.height/3.5)
