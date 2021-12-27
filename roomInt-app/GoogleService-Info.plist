@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>475297613335-ukdvek0h957v9t9peaqggudah0bcrafk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.475297613335-ukdvek0h957v9t9peaqggudah0bcrafk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBH57EkAZcd9MOFFaRTvnDgqLU4Qsps5zA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>475297613335</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rangga.roomInt-app</string>
+	<key>PROJECT_ID</key>
+	<string>roomint-226ee</string>
+	<key>STORAGE_BUCKET</key>
+	<string>roomint-226ee.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:475297613335:ios:b5e7d59825bb793fe6fe52</string>
+	<key>DATABASE_URL</key>
+	<string>https://roomint-226ee-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
