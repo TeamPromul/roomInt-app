@@ -11,8 +11,16 @@ struct ConsultTabItem: View {
     @Binding var navBarTitle: String
     @Binding var displayMode: NavigationBarItem.TitleDisplayMode
     var body: some View {
-        Text("Coming Soon!")
-            .onAppear {
+        ScrollView(.vertical) {
+            ForEach(0..<5) { _ in
+                NavigationLink(destination: ConsultView()) {
+                        ChatList()
+    
+                }
+            }
+        }
+        .padding()
+        .onAppear {
                 self.navBarTitle = "Consult"
                 self.displayMode = .large
             }
