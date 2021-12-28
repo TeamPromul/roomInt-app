@@ -15,6 +15,12 @@
 		A5647C302767B23900EDDF81 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5647C2F2767B23900EDDF81 /* SecondaryButtonStyle.swift */; };
 		A5647C342767C54D00EDDF81 /* OnBoardingBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5647C332767C54D00EDDF81 /* OnBoardingBridge.swift */; };
 		A5647C3627681D3C00EDDF81 /* OnBoardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5647C3527681D3C00EDDF81 /* OnBoardingViewModel.swift */; };
+		AE233E1F2779E50D0042A6AF /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E1E2779E50D0042A6AF /* ChatList.swift */; };
+		AE233E212779EACE0042A6AF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E202779EACE0042A6AF /* Message.swift */; };
+		AE233E252779EC240042A6AF /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E242779EC240042A6AF /* ChatBubble.swift */; };
+		AE233E272779EDB40042A6AF /* ConsultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E262779EDB40042A6AF /* ConsultView.swift */; };
+		AE233E29277A04DE0042A6AF /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E28277A04DE0042A6AF /* View+Extension.swift */; };
+		AE233E2B277A05350042A6AF /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E2A277A05350042A6AF /* KeyboardResponder.swift */; };
 		AE2E32EE2756071900C71E48 /* HomeTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E32ED2756071900C71E48 /* HomeTabItem.swift */; };
 		AE2E32F027560C2200C71E48 /* CircleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E32EF27560C2200C71E48 /* CircleCollection.swift */; };
 		AE2E32F227560C4F00C71E48 /* RactangleCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2E32F127560C4F00C71E48 /* RactangleCards.swift */; };
@@ -45,6 +51,12 @@
 		A5647C2F2767B23900EDDF81 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
 		A5647C332767C54D00EDDF81 /* OnBoardingBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingBridge.swift; sourceTree = "<group>"; };
 		A5647C3527681D3C00EDDF81 /* OnBoardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewModel.swift; sourceTree = "<group>"; };
+		AE233E1E2779E50D0042A6AF /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		AE233E202779EACE0042A6AF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AE233E242779EC240042A6AF /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		AE233E262779EDB40042A6AF /* ConsultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultView.swift; sourceTree = "<group>"; };
+		AE233E28277A04DE0042A6AF /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		AE233E2A277A05350042A6AF /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		AE2E32ED2756071900C71E48 /* HomeTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabItem.swift; sourceTree = "<group>"; };
 		AE2E32EF27560C2200C71E48 /* CircleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCollection.swift; sourceTree = "<group>"; };
 		AE2E32F127560C4F00C71E48 /* RactangleCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RactangleCards.swift; sourceTree = "<group>"; };
@@ -177,6 +189,7 @@
 				AED875C127715F4A00DC20CA /* Customer.swift */,
 				AED875C3277160A100DC20CA /* Interior.swift */,
 				AED875C52771616A00DC20CA /* Designer.swift */,
+				AE233E202779EACE0042A6AF /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 			children = (
 				A5647C2127678A3C00EDDF81 /* Color+Extension.swift */,
 				A5647C2A2767A25900EDDF81 /* Text+Extension.swift */,
+				AE233E28277A04DE0042A6AF /* View+Extension.swift */,
+				AE233E2A277A05350042A6AF /* KeyboardResponder.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,6 +240,7 @@
 				AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */,
 				AEF6BFC927672443008DB169 /* ProfileTabItem.swift */,
 				AEE5CDED2768306000C98C84 /* ConsultTabItem.swift */,
+				AE233E262779EDB40042A6AF /* ConsultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +255,8 @@
 				AEF6BFC727671CBE008DB169 /* CatalogCollection.swift */,
 				AEF6BFCC27675A38008DB169 /* Bubble.swift */,
 				AED875C72771634200DC20CA /* CatalogCards.swift */,
+				AE233E1E2779E50D0042A6AF /* ChatList.swift */,
+				AE233E242779EC240042A6AF /* ChatBubble.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -343,6 +361,7 @@
 				AE37C696273A1DB400B5B320 /* ContentView.swift in Sources */,
 				AE2E32F427560C8700C71E48 /* BoxCards.swift in Sources */,
 				AEE5CDEE2768306000C98C84 /* ConsultTabItem.swift in Sources */,
+				AE233E272779EDB40042A6AF /* ConsultView.swift in Sources */,
 				AED875C227715F4A00DC20CA /* Customer.swift in Sources */,
 				AEE5CDF0276834B300C98C84 /* CustomerView.swift in Sources */,
 				AED875C82771634200DC20CA /* CatalogCards.swift in Sources */,
@@ -353,12 +372,17 @@
 				AEF6BFC827671CBE008DB169 /* CatalogCollection.swift in Sources */,
 				AE37C694273A1DB400B5B320 /* roomInt_appApp.swift in Sources */,
 				AE2E32F027560C2200C71E48 /* CircleCollection.swift in Sources */,
+				AE233E1F2779E50D0042A6AF /* ChatList.swift in Sources */,
 				AEF6BFCA27672443008DB169 /* ProfileTabItem.swift in Sources */,
+				AE233E29277A04DE0042A6AF /* View+Extension.swift in Sources */,
+				AE233E212779EACE0042A6AF /* Message.swift in Sources */,
 				A5647C2227678A3C00EDDF81 /* Color+Extension.swift in Sources */,
 				A5647C2B2767A25900EDDF81 /* Text+Extension.swift in Sources */,
 				A5647C3627681D3C00EDDF81 /* OnBoardingViewModel.swift in Sources */,
 				A5647C342767C54D00EDDF81 /* OnBoardingBridge.swift in Sources */,
+				AE233E2B277A05350042A6AF /* KeyboardResponder.swift in Sources */,
 				A5647C292767A13A00EDDF81 /* OnBoarding.swift in Sources */,
+				AE233E252779EC240042A6AF /* ChatBubble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
