@@ -17,8 +17,10 @@ struct Interior: Codable, Identifiable {
 }
 
 
-enum Category: String, Codable {
+enum Category: String, Codable, CaseIterable {
     case livingRoom = "Living Room"
     case bedroom = "Bedroom"
     case kitchen = "Kichen"
+    
+    var id: String { self.rawValue }
 }
