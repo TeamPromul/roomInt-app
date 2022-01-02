@@ -13,20 +13,16 @@ struct CatalogTabItem: View {
     @Binding var navBarTitle: String
     
     var body: some View {
-        VStack(spacing: 20) {
-            Picker("Category", selection: $mode) {
-                Text("Living Room").tag(0)
-                Text("Bedroom").tag(1)
-                Text("Kitchen").tag(2)
-            }.pickerStyle(SegmentedPickerStyle())
+        ScrollView(showsIndicators: false) {
+            SearchBar()
                 .padding(.horizontal)
                 .padding(.top)
-            if mode == 0 {
-                livingRoomView()
-            }else if mode == 1 {
-                bedroomView()
-            }else {
-                KitchenView()
+                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
+            
+            ForEach(0..<8) {_ in
+                CatalogCards()
+                    .padding(.horizontal)
+                    .padding(.vertical)
             }
         }
         .onAppear {
@@ -34,48 +30,6 @@ struct CatalogTabItem: View {
         }.onDisappear {
             self.navBarHidden = false
         }
-    }
-    
-    @ViewBuilder
-    private func livingRoomView() -> some View {
-        VStack(spacing: 20) {
-            SearchBar()
-                .padding(.horizontal)
-                .padding(.top)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
-            CatalogCollection()
-                .padding(.horizontal)
-            Spacer()
-        }
-        .background(Color.grayBg)
-    }
-    
-    @ViewBuilder
-    private func bedroomView() -> some View {
-        VStack(spacing: 20) {
-            SearchBar()
-                .padding(.horizontal)
-                .padding(.top)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
-            CatalogCollection()
-                .padding(.horizontal)
-            Spacer()
-        }
-        .background(Color.grayBg)
-    }
-    
-    @ViewBuilder
-    private func KitchenView() -> some View {
-        VStack(spacing: 20) {
-            SearchBar()
-                .padding(.horizontal)
-                .padding(.top)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
-            CatalogCollection()
-                .padding(.horizontal)
-            Spacer()
-        }
-        .background(Color.grayBg)
     }
 }
 
