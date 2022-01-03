@@ -11,7 +11,7 @@ struct CatalogTabItem: View {
     @State private var mode: Int = 0
     @Binding var navBarHidden: Bool
     @Binding var navBarTitle: String
-    @State var category: Category = .livingRoom
+    @State var category: Category = .all
     var body: some View {
         ScrollView(showsIndicators: false) {
             
@@ -22,11 +22,12 @@ struct CatalogTabItem: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(Category.allCases, id: \.id) { item in
+                    ForEach(Category.allCases, id: \.self) { item in
                         CategoryStack(cats: item, isSelected: self.category == item, onSelect: { selectedValue in
                             self.category = selectedValue
                         })
                             .padding(.horizontal, 10)
+                            .padding(.top, 5)
                     }
                 }
             }.padding()

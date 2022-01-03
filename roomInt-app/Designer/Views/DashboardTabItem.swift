@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DashboardTabItem: View {
     @State private var mode: Int = 0
-    @State var category: Category = .livingRoom
+    @State var category: Category = .all
     var body: some View {
         ScrollView(showsIndicators: false) {
             SearchBar()
@@ -24,12 +24,13 @@ struct DashboardTabItem: View {
                             self.category = selectedValue
                         })
                             .padding(.horizontal, 10)
+                            .padding(.top, 5)
                     }
                 }
             }.padding()
-            
+    
             ForEach(0..<8) {_ in
-                CatalogCards()
+                CatalogCardsDesigner()
                     .padding(.horizontal)
                     .padding(.vertical)
             }

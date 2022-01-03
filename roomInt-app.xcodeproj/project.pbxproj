@@ -36,6 +36,7 @@
 		AE4603E42780A9D4009C11BB /* ProfileDesignTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4603E32780A9D4009C11BB /* ProfileDesignTabItem.swift */; };
 		AE4603E62780A9EE009C11BB /* DesignerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4603E52780A9EE009C11BB /* DesignerView.swift */; };
 		AE4603E827829873009C11BB /* CategoryStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4603E727829873009C11BB /* CategoryStack.swift */; };
+		AE4603EA2782BF3C009C11BB /* CatalogCardsDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4603E92782BF3C009C11BB /* CatalogCardsDesigner.swift */; };
 		AE613BCD27624C610001A5F3 /* CatalogTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */; };
 		AED875C227715F4A00DC20CA /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C127715F4A00DC20CA /* Customer.swift */; };
 		AED875C4277160A100DC20CA /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C3277160A100DC20CA /* Interior.swift */; };
@@ -79,6 +80,7 @@
 		AE4603E32780A9D4009C11BB /* ProfileDesignTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignTabItem.swift; sourceTree = "<group>"; };
 		AE4603E52780A9EE009C11BB /* DesignerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerView.swift; sourceTree = "<group>"; };
 		AE4603E727829873009C11BB /* CategoryStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStack.swift; sourceTree = "<group>"; };
+		AE4603E92782BF3C009C11BB /* CatalogCardsDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCardsDesigner.swift; sourceTree = "<group>"; };
 		AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTabItem.swift; sourceTree = "<group>"; };
 		AED875C127715F4A00DC20CA /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		AED875C3277160A100DC20CA /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		AEBD837B273E413100588D1A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AE4603E92782BF3C009C11BB /* CatalogCardsDesigner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				AE2E32F027560C2200C71E48 /* CircleCollection.swift in Sources */,
 				AE233E1F2779E50D0042A6AF /* ChatList.swift in Sources */,
 				AE4603E42780A9D4009C11BB /* ProfileDesignTabItem.swift in Sources */,
+				AE4603EA2782BF3C009C11BB /* CatalogCardsDesigner.swift in Sources */,
 				AEF6BFCA27672443008DB169 /* ProfileTabItem.swift in Sources */,
 				AE233E29277A04DE0042A6AF /* View+Extension.swift in Sources */,
 				AE233E212779EACE0042A6AF /* Message.swift in Sources */,
