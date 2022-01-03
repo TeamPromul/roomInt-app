@@ -11,7 +11,7 @@ struct UploadInteriorView: View {
     @State var title = ""
     @State var category = Category.livingRoom.rawValue
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             Form {
                 Section(header: Text("Design Interior")) {
                     TextField("Title",text: $title)
@@ -22,6 +22,14 @@ struct UploadInteriorView: View {
                     }
                 }
             }
+            
+            Button {
+                
+            }label: {
+                Text("Upload")
+                    .padding(.horizontal, 80)
+            }
+            .buttonStyle(PrimaryButtonStyle())
         }
     }
 }

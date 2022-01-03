@@ -11,7 +11,6 @@ struct DashboardTabItem: View {
     var body: some View {
         NavigationLink(destination: UploadInteriorView()) {
             Text("Upload Design Interior")
-
         }
     }
 }

@@ -29,7 +29,6 @@ struct DesignerView: View {
                               Image(systemName: "person.circle")
                               Text("Profile")
                           }
-                      
                   }
               }
     }
