@@ -18,6 +18,7 @@ struct Interior: Codable, Identifiable {
 
 
 enum Category: String, Codable, CaseIterable {
+    case all = "All"
     case livingRoom = "Living Room"
     case bedroom = "Bedroom"
     case kitchen = "Kichen"
