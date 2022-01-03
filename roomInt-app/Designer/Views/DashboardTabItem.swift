@@ -1,19 +1,17 @@
 //
-//  CatalogTabItem.swift
+//  DashboardTabItem.swift
 //  roomInt-app
 //
-//  Created by Dicky Buwono on 09/12/21.
+//  Created by Dicky Buwono on 01/01/22.
 //
 
 import SwiftUI
 
-struct CatalogTabItem: View {
+struct DashboardTabItem: View {
     @State private var mode: Int = 0
-    @Binding var navBarTitle: String
     @State var category: Category = .all
     var body: some View {
         ScrollView(showsIndicators: false) {
-            
             SearchBar()
                 .padding(.horizontal)
                 .padding(.top)
@@ -21,7 +19,7 @@ struct CatalogTabItem: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(Category.allCases, id: \.self) { item in
+                    ForEach(Category.allCases, id: \.id) { item in
                         CategoryStack(cats: item, isSelected: self.category == item, onSelect: { selectedValue in
                             self.category = selectedValue
                         })
@@ -30,21 +28,18 @@ struct CatalogTabItem: View {
                     }
                 }
             }.padding()
-            
+    
             ForEach(0..<8) {_ in
-                CatalogCards()
+                CatalogCardsDesigner()
                     .padding(.horizontal)
                     .padding(.vertical)
             }
         }
-        .onAppear {
-            self.navBarTitle = "Catalog"
-        }
     }
 }
 
-struct CatalogTabItem_Previews: PreviewProvider {
+struct DashboardTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        CatalogTabItem(navBarTitle: .constant(""))
+        DashboardTabItem()
     }
 }

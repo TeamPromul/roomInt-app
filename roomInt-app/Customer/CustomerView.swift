@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct CustomerView: View {
-    @State private var navBarHidden = false
     @State private var navBarTitle = "Find Your Design"
-    @State private var displayMode: NavigationBarItem.TitleDisplayMode = .large
     var body: some View {
+<<<<<<< HEAD
 
         TabView {
             HomeTabItem(navBarHidden: $navBarHidden, navBarTitle: $navBarTitle, displayMode: $displayMode)
@@ -43,6 +42,36 @@ struct CustomerView: View {
         }
         .navigationBarBackButtonHidden(true)
 
+=======
+        NavigationView {
+                  TabView {
+                      HomeTabItem(navBarTitle: $navBarTitle)
+                          .tabItem {
+                              Image(systemName: "house")
+                              Text("Home")
+                          }
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      CatalogTabItem(navBarTitle: $navBarTitle)
+                          .tabItem {
+                              Image(systemName: "book")
+                              Text("Catalog")
+                          }
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      ConsultTabItem(navBarTitle: $navBarTitle)
+                          .tabItem {
+                              Image(systemName: "ellipsis.bubble")
+                              Text("Consult")
+                          }
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      ProfileTabItem(navBarTitle: $navBarTitle)
+                          .tabItem {
+                              Image(systemName: "person.circle")
+                              Text("Profile")
+                          }
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                  }
+              }
+>>>>>>> f6e6999ec530eb9f84816ebd0810087761d30598
     }
 }
 
