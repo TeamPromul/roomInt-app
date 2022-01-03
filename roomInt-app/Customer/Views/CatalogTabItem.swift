@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CatalogTabItem: View {
     @State private var mode: Int = 0
-    @Binding var navBarHidden: Bool
     @Binding var navBarTitle: String
     @State var category: Category = .all
     var body: some View {
@@ -39,15 +38,13 @@ struct CatalogTabItem: View {
             }
         }
         .onAppear {
-            self.navBarHidden = true
-        }.onDisappear {
-            self.navBarHidden = false
+            self.navBarTitle = "Catalog"
         }
     }
 }
 
 struct CatalogTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        CatalogTabItem(navBarHidden: .constant(true), navBarTitle: .constant(""))
+        CatalogTabItem(navBarTitle: .constant(""))
     }
 }
