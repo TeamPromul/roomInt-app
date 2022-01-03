@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileTabItem: View {
     var profileItem = ["Edit Name", "Shipping Info", "Notification", "Terms & Condition"]
     @Binding var navBarTitle: String
-    @Binding var displayMode: NavigationBarItem.TitleDisplayMode
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Bubble()
@@ -37,13 +36,12 @@ struct ProfileTabItem: View {
         
         .onAppear {
             self.navBarTitle = "Profile"
-            self.displayMode = .large
         }
     }
 }
 
 struct ProfileTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileTabItem(navBarTitle: .constant("Profile"), displayMode: .constant(.large))
+        ProfileTabItem(navBarTitle: .constant("Profile"))
     }
 }

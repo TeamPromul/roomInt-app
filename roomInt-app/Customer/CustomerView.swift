@@ -8,38 +8,34 @@
 import SwiftUI
 
 struct CustomerView: View {
-    @State private var navBarHidden = false
     @State private var navBarTitle = "Find Your Design"
-    @State private var displayMode: NavigationBarItem.TitleDisplayMode = .large
     var body: some View {
         NavigationView {
                   TabView {
-                      HomeTabItem(navBarHidden: $navBarHidden, navBarTitle: $navBarTitle, displayMode: $displayMode)
+                      HomeTabItem(navBarTitle: $navBarTitle)
                           .tabItem {
                               Image(systemName: "house")
                               Text("Home")
                           }
-                          .navigationBarTitle(navBarTitle, displayMode: displayMode)
-                          .navigationBarHidden(navBarHidden)
-                      CatalogTabItem(navBarHidden: $navBarHidden, navBarTitle: $navBarTitle)
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      CatalogTabItem(navBarTitle: $navBarTitle)
                           .tabItem {
                               Image(systemName: "book")
                               Text("Catalog")
                           }
-                          .navigationBarTitle(navBarTitle, displayMode: displayMode)
-                          .navigationBarHidden(navBarHidden)
-                      ConsultTabItem(navBarTitle: $navBarTitle, displayMode: $displayMode)
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      ConsultTabItem(navBarTitle: $navBarTitle)
                           .tabItem {
                               Image(systemName: "ellipsis.bubble")
                               Text("Consult")
                           }
-                          .navigationBarTitle(navBarTitle, displayMode: displayMode)
-                      ProfileTabItem(navBarTitle: $navBarTitle, displayMode: $displayMode)
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
+                      ProfileTabItem(navBarTitle: $navBarTitle)
                           .tabItem {
                               Image(systemName: "person.circle")
                               Text("Profile")
                           }
-                          .navigationBarTitle(navBarTitle, displayMode: displayMode)
+                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
                   }
               }
     }
