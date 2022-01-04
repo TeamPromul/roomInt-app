@@ -10,6 +10,9 @@ import SwiftUI
 struct DashboardTabItem: View {
     @State private var mode: Int = 0
     @State var category: Category = .all
+    @ObservedObject private var repository: InteriorViewModel = .shared
+    
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             SearchBar()
@@ -29,11 +32,13 @@ struct DashboardTabItem: View {
                 }
             }.padding()
     
-            ForEach(0..<8) {_ in
-                CatalogCardsDesigner()
+            ForEach(repository.listInterior, id: \.id) {item in
+                CatalogCardsDesigner(inter: item)
                     .padding(.horizontal)
                     .padding(.vertical)
             }
+        }.onAppear() {
+            repository.fetch()
         }
     }
 }

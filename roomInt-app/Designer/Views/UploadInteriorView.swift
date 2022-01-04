@@ -9,6 +9,10 @@ import SwiftUI
 
 struct UploadInteriorView: View {
     @StateObject private var viewModel: ViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var showImagePicker: Bool = false
+    @State private var showActionSheet = false
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     init() {
         _viewModel = StateObject(wrappedValue: ViewModel())
@@ -26,12 +30,25 @@ struct UploadInteriorView: View {
                         }
                     }
                 }
+                if viewModel.image == [] {
+                    Image(systemName: "square.dashed.inset.filled")
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .padding(.bottom, 10.0)
+                } else {
+                    if let image = viewModel.image {
+                        Image(uiImage: image[0])
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                            .padding(.bottom, 10.0)
+                    }
+                }
+                uploadButton()
             }
             
             Button {
-                viewModel.placeOrder { <#DocumentReference#> in
-                    <#code#>
-                }
+                viewModel.placeOrder()
+                presentationMode.wrappedValue.dismiss()
             }label: {
                 Text("Upload")
                     .padding(.horizontal, 80)
@@ -39,10 +56,38 @@ struct UploadInteriorView: View {
             .buttonStyle(PrimaryButtonStyle())
         }
     }
+    
+    @ViewBuilder func uploadButton() -> some View {
+        Button("Unggah"){
+            self.showActionSheet.toggle()
+        }
+        
+        .sheet(isPresented: $showImagePicker) {            ImagePickerHelper(sourceType: sourceType, pickerResult: $viewModel.image)
+        }
+        .actionSheet(isPresented: $showActionSheet) {
+            ActionSheet(
+                title: Text("Choose mode"),
+                message: Text("Please choose your preferred mode to set your profile image"),
+                buttons: [
+                    .default(Text("Camera")) {
+                        self.showImagePicker.toggle()
+                        self.sourceType = .camera
+                    },
+                    .default(Text("Photo Library")) {
+                        self.showImagePicker.toggle()
+                        self.sourceType = .photoLibrary
+                    },
+                    .cancel()
+                ]
+            )
+        }
+    }
+    
 }
 
-//struct UploadInteriorView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UploadInteriorView(inter: )
-//    }
-//}
+
+struct UploadInteriorView_Previews: PreviewProvider {
+    static var previews: some View {
+        UploadInteriorView()
+    }
+}

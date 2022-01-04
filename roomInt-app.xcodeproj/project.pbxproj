@@ -68,6 +68,8 @@
 		AE4604172783B730009C11BB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AE4604162783B730009C11BB /* FirebaseStorage */; };
 		AE4604192783B730009C11BB /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AE4604182783B730009C11BB /* FirebaseStorageSwift-Beta */; };
 		AE46041B2783C0E4009C11BB /* UploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041A2783C0E4009C11BB /* UploadViewModel.swift */; };
+		AE46041D2783CFE2009C11BB /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041C2783CFE2009C11BB /* StorageService.swift */; };
+		AE46041F2783D370009C11BB /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041E2783D370009C11BB /* ImagePickerHelper.swift */; };
 		AE613BCD27624C610001A5F3 /* CatalogTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */; };
 		AED875C227715F4A00DC20CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C127715F4A00DC20CA /* User.swift */; };
 		AED875C4277160A100DC20CA /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C3277160A100DC20CA /* Interior.swift */; };
@@ -121,6 +123,8 @@
 		AE4603E727829873009C11BB /* CategoryStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStack.swift; sourceTree = "<group>"; };
 		AE4603E92782BF3C009C11BB /* CatalogCardsDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCardsDesigner.swift; sourceTree = "<group>"; };
 		AE46041A2783C0E4009C11BB /* UploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewModel.swift; sourceTree = "<group>"; };
+		AE46041C2783CFE2009C11BB /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		AE46041E2783D370009C11BB /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTabItem.swift; sourceTree = "<group>"; };
 		AED875C127715F4A00DC20CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AED875C3277160A100DC20CA /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A527AC93277DA160002132D4 /* FirebaseManager.swift */,
+				AE46041C2783CFE2009C11BB /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				A552A07A277A7E7300D3BD60 /* ImagePicker.swift */,
 				AE233E28277A04DE0042A6AF /* View+Extension.swift */,
 				AE233E2A277A05350042A6AF /* KeyboardResponder.swift */,
+				AE46041E2783D370009C11BB /* ImagePickerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 				AEE5CDEE2768306000C98C84 /* ConsultTabItem.swift in Sources */,
 				A5F907532779E0A0006ED0BD /* SignupView.swift in Sources */,
 				AED875C227715F4A00DC20CA /* User.swift in Sources */,
+				AE46041F2783D370009C11BB /* ImagePickerHelper.swift in Sources */,
 				A5E8F5AD277ED139006F3ABC /* InteriorViewModel.swift in Sources */,
 				A5F90755277A0A67006ED0BD /* AuthButtonStyle.swift in Sources */,
 				A552A07B277A7E7300D3BD60 /* ImagePicker.swift in Sources */,
@@ -554,6 +561,7 @@
 				A527AC97277DA1DF002132D4 /* UserViewModel.swift in Sources */,
 				AE233E29277A04DE0042A6AF /* View+Extension.swift in Sources */,
 				AE4603E22780A9C7009C11BB /* ConsultDesignTabItem.swift in Sources */,
+				AE46041D2783CFE2009C11BB /* StorageService.swift in Sources */,
 				A5647C2227678A3C00EDDF81 /* Color+Extension.swift in Sources */,
 				A5647C2B2767A25900EDDF81 /* Text+Extension.swift in Sources */,
 				A5647C3627681D3C00EDDF81 /* OnBoardingViewModel.swift in Sources */,

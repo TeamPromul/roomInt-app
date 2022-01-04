@@ -47,7 +47,7 @@ struct LoginView: View {
                         
                     }.padding(.bottom, 100)
                     
-                    NavigationLink(destination: CustomerView(), isActive: $viewModel.isLoginSuccess) {
+                    NavigationLink(destination: DesignerView(), isActive: $viewModel.isLoginSuccess) {
                         Button(action: {
                             Task {
                                 await viewModel.login()
@@ -82,7 +82,7 @@ struct LoginView: View {
             .alert(isPresented: $viewModel.isAlertShow ) {
                 Alert(title: Text("Login failed"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Ok")))
             }
-            
+            .navigationBarHidden(true)
         }
         
     }

@@ -23,3 +23,8 @@ enum Category: String, Codable, CaseIterable {
     case bedroom = "Bedroom"
     case kitchen = "Kichen"
 }
+
+
+extension Interior {
+    static let preview = Interior(image: "HomeBg", title: "Living Room like office", category: .livingRoom, price: "Rp. 500.000")
+}
