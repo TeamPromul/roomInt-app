@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CatalogCards: View {
+    let interiors: Interior
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -24,11 +25,11 @@ struct CatalogCards: View {
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Rp. 500.000")
+                    Text(interiors.title)
                         .font(.system(size: 15, weight: .medium))
-                    Text("Living Room")
+                    Text(interiors.category.rawValue)
                         .font(.system(size: 10, weight: .regular))
-                    Text("Light Room")
+                    Text(interiors.price)
                         .font(.system(size: 10, weight: .regular))
                 }
                 Spacer()
@@ -56,10 +57,10 @@ struct CatalogCards: View {
     }
 }
 
-struct CatalogCards_Previews: PreviewProvider {
-    static var previews: some View {
-        CatalogCards()
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
-}
+//struct CatalogCards_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CatalogCards(interiors: Interior()
+//            .previewLayout(.sizeThatFits)
+//            .padding()
+//    }
+//}

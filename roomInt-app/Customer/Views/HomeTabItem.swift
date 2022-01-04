@@ -19,6 +19,8 @@ struct HomeTabItem: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    
     var body: some View {
         ScrollView(.vertical){
             ZStack (alignment: .top) {

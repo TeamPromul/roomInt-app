@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct UploadInteriorView: View {
-    @State var title = ""
-    @State var category = Category.livingRoom.rawValue
-    @State var price = ""
+    @StateObject private var viewModel: ViewModel
+    
+    init() {
+        _viewModel = StateObject(wrappedValue: ViewModel())
+    }
+    
     var body: some View {
         VStack(alignment: .center) {
             Form {
                 Section(header: Text("Design Interior")) {
-                    TextField("Title",text: $title)
-                    TextField("Price", text: $price)
-                    Picker(selection: $category, label: Text("Select Category")) {
-                        ForEach(Category.allCases, id: \.id) { categories in
+                    TextField("Title",text: $viewModel.title)
+                    TextField("Price", text: $viewModel.price)
+                    Picker(selection: $viewModel.category, label: Text("Select Category")) {
+                        ForEach(Category.allCases, id: \.self) { categories in
                             Text(categories.rawValue.capitalized)
                         }
                     }
@@ -26,7 +29,9 @@ struct UploadInteriorView: View {
             }
             
             Button {
-                
+                viewModel.placeOrder { <#DocumentReference#> in
+                    <#code#>
+                }
             }label: {
                 Text("Upload")
                     .padding(.horizontal, 80)
@@ -36,8 +41,8 @@ struct UploadInteriorView: View {
     }
 }
 
-struct UploadInteriorView_Previews: PreviewProvider {
-    static var previews: some View {
-        UploadInteriorView()
-    }
-}
+//struct UploadInteriorView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UploadInteriorView(inter: )
+//    }
+//}

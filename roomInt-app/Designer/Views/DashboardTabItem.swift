@@ -19,7 +19,7 @@ struct DashboardTabItem: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(Category.allCases, id: \.id) { item in
+                    ForEach(Category.allCases, id: \.self) { item in
                         CategoryStack(cats: item, isSelected: self.category == item, onSelect: { selectedValue in
                             self.category = selectedValue
                         })

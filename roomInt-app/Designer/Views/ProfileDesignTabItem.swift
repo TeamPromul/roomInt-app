@@ -11,8 +11,6 @@ struct ProfileDesignTabItem: View {
     var profileItem = ["Edit Name", "Shipping Info", "Notification", "Terms & Condition"]
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Bubble()
-                .padding(.horizontal)
             ForEach(profileItem, id: \.self) { item in
                     HStack {
                         Text(item)
