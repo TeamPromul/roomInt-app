@@ -13,6 +13,7 @@ struct UploadInteriorView: View {
     @State var showImagePicker: Bool = false
     @State private var showActionSheet = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var isPresented = false
     
     init() {
         _viewModel = StateObject(wrappedValue: ViewModel())
@@ -35,6 +36,7 @@ struct UploadInteriorView: View {
                         .resizable()
                         .frame(width: 100, height: 100, alignment: .center)
                         .padding(.bottom, 10.0)
+                        .foregroundColor(Color.primaryColor)
                 } else {
                     if let image = viewModel.image {
                         Image(uiImage: image[0])
@@ -48,12 +50,17 @@ struct UploadInteriorView: View {
             
             Button {
                 viewModel.placeOrder()
-                presentationMode.wrappedValue.dismiss()
+                self.isPresented.toggle()
             }label: {
                 Text("Upload")
                     .padding(.horizontal, 80)
             }
             .buttonStyle(PrimaryButtonStyle())
+            .fullScreenCover(isPresented: $isPresented, onDismiss: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                SuccedModalView()
+            }
         }
     }
     
