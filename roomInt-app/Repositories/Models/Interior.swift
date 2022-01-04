@@ -17,8 +17,14 @@ struct Interior: Codable, Identifiable {
 }
 
 
-enum Category: String, Codable {
+enum Category: String, Codable, CaseIterable {
+    case all = "All"
     case livingRoom = "Living Room"
     case bedroom = "Bedroom"
     case kitchen = "Kichen"
+}
+
+
+extension Interior {
+    static let preview = Interior(image: "HomeBg", title: "Living Room like office", category: .livingRoom, price: "Rp. 500.000")
 }

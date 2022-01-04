@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ChatBubble: View {
-    let message: Message
     var body: some View {
         HStack(spacing: 15) {
             Image(systemName: "person.crop.circle.fill")
@@ -17,9 +16,9 @@ struct ChatBubble: View {
                 .frame(width: 65, height: 65)
                 .clipShape(Circle())
             VStack(alignment: .leading, spacing: 10){
-                Text(message.user.name)
+                Text("name")
                     .font(.system(size: 18, weight: .semibold))
-                Text(message.content)
+                Text("content")
                     .font(.system(size: 15, weight: .regular))
                     .foregroundColor(.gray)
                     
@@ -30,6 +29,6 @@ struct ChatBubble: View {
 
 struct ChatBubble_Previews: PreviewProvider {
     static var previews: some View {
-        ChatBubble(message: Message.preview)
+        ChatBubble()
     }
 }

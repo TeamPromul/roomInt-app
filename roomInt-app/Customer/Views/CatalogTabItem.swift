@@ -11,6 +11,7 @@ struct CatalogTabItem: View {
     @State private var mode: Int = 0
     @Binding var navBarTitle: String
     @State var category: Category = .all
+    @ObservedObject private var repository: InteriorViewModel = .shared
     var body: some View {
         ScrollView(showsIndicators: false) {
             
@@ -31,8 +32,8 @@ struct CatalogTabItem: View {
                 }
             }.padding()
             
-            ForEach(0..<8) {_ in
-                CatalogCards()
+            ForEach(repository.listInterior, id: \.id) {item in
+                CatalogCards(interiors: item)
                     .padding(.horizontal)
                     .padding(.vertical)
             }

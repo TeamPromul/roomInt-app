@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CatalogCardsDesigner: View {
+    let inter: Interior
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
@@ -16,17 +18,25 @@ struct CatalogCardsDesigner: View {
                 Text("Marrisa Fortuna")
                     .font(.system(size: 13, weight: .medium))
             }
-            Image("HomeBg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
-                .clipped()
+            if let image = inter.image {
+                WebImage(url: URL(string: image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
+            }else {
+                Image("HomeBg")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
+            }
             
-            Text("Rp. 500.000")
+            Text(inter.title)
                 .font(.system(size: 15, weight: .medium))
-            Text("Living Room")
+            Text(inter.category.rawValue)
                 .font(.system(size: 10, weight: .regular))
-            Text("Light Room")
+            Text(inter.price)
                 .font(.system(size: 10, weight: .regular))
         }
     }
@@ -34,6 +44,6 @@ struct CatalogCardsDesigner: View {
 
 struct CatalogCardsDesigner_Previews: PreviewProvider {
     static var previews: some View {
-        CatalogCardsDesigner()
+        CatalogCardsDesigner(inter: Interior.preview)
     }
 }

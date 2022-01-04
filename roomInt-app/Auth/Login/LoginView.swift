@@ -24,30 +24,32 @@ struct LoginView: View {
     
     
     var body: some View {
-        NavigationView {
-            GeometryReader { proxy in
-                ScrollView {
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200)
-                    VStack(spacing: 10) {
-                        TextInput(text: $viewModel.userData.email, placeholder: "Email", keyboardType: .default, isPass: false)
-                        TextInput(text: $viewModel.userData.password, placeholder: "Password", keyboardType: .default, isPass: true)
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Button {
-                            
-                        } label: {
-                            Text("Forgot password ?")
-                                .foregroundColor(.black)
+        if viewModel.isLoginSuccess {
+            DesignerView()
+        }else {
+            NavigationView {
+                GeometryReader { proxy in
+                    ScrollView {
+                        Image("logo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                        VStack(spacing: 10) {
+                            TextInput(text: $viewModel.userData.email, placeholder: "Email", keyboardType: .default, isPass: false)
+                            TextInput(text: $viewModel.userData.password, placeholder: "Password", keyboardType: .default, isPass: true)
                         }
                         
-                    }.padding(.bottom, 100)
-                    
-                    NavigationLink(destination: CustomerView(), isActive: $viewModel.isLoginSuccess) {
+                        HStack {
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                Text("Forgot password ?")
+                                    .foregroundColor(.black)
+                            }
+                            
+                        }.padding(.bottom, 100)
+                        
                         Button(action: {
                             Task {
                                 await viewModel.login()
@@ -58,32 +60,31 @@ struct LoginView: View {
                                 .frame(width: proxy.size.width)
                         }
                         .buttonStyle(AuthButtonStyle())
-                    }
-                    
-                    
-                    
-                    HStack {
-                        Text("Already have an account? ")
-                        NavigationLink(destination: SignupView(), isActive: $isActive) {
-                            Button {
-                                isActive.toggle()
-                            } label: {
-                                Text("Signup")
-                                    .foregroundColor(.secondaryColor)
+                        
+                        HStack {
+                            Text("Already have an account? ")
+                            NavigationLink(destination: SignupView(), isActive: $isActive) {
+                                Button {
+                                    isActive.toggle()
+                                } label: {
+                                    Text("Signup")
+                                        .foregroundColor(.secondaryColor)
+                                }
                             }
                         }
+                        .padding()
                     }
-                    .padding()
+                }
+                .padding(.horizontal, 16)
+                .navigationTitle("Login")
+                .navigationBarBackButtonHidden(true)
+                .alert(isPresented: $viewModel.isAlertShow ) {
+                    Alert(title: Text("Login failed"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Ok")))
                 }
             }
-            .padding(.horizontal, 16)
-            .navigationTitle("Login")
-            .navigationBarBackButtonHidden(true)
-            .alert(isPresented: $viewModel.isAlertShow ) {
-                Alert(title: Text("Login failed"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Ok")))
-            }
-            
         }
+        
+        
         
     }
 }

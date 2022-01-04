@@ -20,7 +20,7 @@ struct ConsultView: View {
         VStack {
             List {
                 ForEach(0..<2) { _ in
-                    ChatBubble(message: Message.preview)
+                    ChatBubble()
                 }
             }.listStyle(.inset)
             HStack {

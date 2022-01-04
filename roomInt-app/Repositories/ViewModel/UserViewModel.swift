@@ -15,6 +15,7 @@ class UserViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var isAlertShow = false
     @Published var isLoginSuccess: Bool = false
+    
 
 
     func signup() async {
@@ -32,7 +33,7 @@ class UserViewModel: ObservableObject {
         do {
             let result = try await FirebaseManager.shared.auth.signIn(withEmail: userData.email, password: userData.password)
 
-            self.getUserInformation()
+            await self.getUserInformation()
             self.isLoginSuccess.toggle()
         } catch {
             self.errorMessage = error.localizedDescription
@@ -98,28 +99,20 @@ class UserViewModel: ObservableObject {
 
     }
 
-    func getUserInformation()  {
-        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+    func getUserInformation() async {
+            guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
 
-        FirebaseManager.shared.firestore
-            .collection("Users").document(uid).getDocument { snapshot, error in
-                if let error = error {
-                    self.errorMessage = "Failed to fetch current user: \(error)"
-                    print("Failed to fetch current user:", error)
-                    return
+            do {
+                let snapshot = try await FirebaseManager.shared.firestore
+                    .collection("Users").document(uid).getDocument()
+
+                if let userData = try snapshot.data(as: User.self) {
+                    DispatchQueue.main.async {
+                        self.userData = userData
+                    }
                 }
-
-                guard let dataUser = snapshot?.data() else {
-                    self.errorMessage = "No data found"
-                    return
-
-                }
-                self.userData.interiors = dataUser["interiors"] as? [Interior] ?? []
-                self.userData.isDesainer = dataUser["isDesainer"] as? Bool ?? false
-                self.userData.name = dataUser["nama"] as? String ?? ""
-                self.userData.phoneNumber = dataUser["phoneNumber"] as? String ?? ""
-                self.userData.email = dataUser["email"] as? String ?? ""
-                self.userData.photo = dataUser["photo"] as? String ?? ""
+            } catch {
+                print(error)
             }
-    }
+        }
 }
