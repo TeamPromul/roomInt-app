@@ -70,6 +70,7 @@
 		AE46041B2783C0E4009C11BB /* UploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041A2783C0E4009C11BB /* UploadViewModel.swift */; };
 		AE46041D2783CFE2009C11BB /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041C2783CFE2009C11BB /* StorageService.swift */; };
 		AE46041F2783D370009C11BB /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041E2783D370009C11BB /* ImagePickerHelper.swift */; };
+		AE4604222783E8E9009C11BB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE4604212783E8E9009C11BB /* SDWebImageSwiftUI */; };
 		AE613BCD27624C610001A5F3 /* CatalogTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */; };
 		AED875C227715F4A00DC20CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C127715F4A00DC20CA /* User.swift */; };
 		AED875C4277160A100DC20CA /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C3277160A100DC20CA /* Interior.swift */; };
@@ -149,6 +150,7 @@
 				AE4604192783B730009C11BB /* FirebaseStorageSwift-Beta in Frameworks */,
 				AE4603F92783B730009C11BB /* FirebaseAuth in Frameworks */,
 				AE4604072783B730009C11BB /* FirebaseFunctions in Frameworks */,
+				AE4604222783E8E9009C11BB /* SDWebImageSwiftUI in Frameworks */,
 				AE4604032783B730009C11BB /* FirebaseFirestoreCombine-Community in Frameworks */,
 				AE46040D2783B730009C11BB /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				AE4604052783B730009C11BB /* FirebaseFirestoreSwift-Beta in Frameworks */,
@@ -464,6 +466,7 @@
 				AE4604142783B730009C11BB /* FirebaseRemoteConfig */,
 				AE4604162783B730009C11BB /* FirebaseStorage */,
 				AE4604182783B730009C11BB /* FirebaseStorageSwift-Beta */,
+				AE4604212783E8E9009C11BB /* SDWebImageSwiftUI */,
 			);
 			productName = "roomInt-app";
 			productReference = AE37C690273A1DB400B5B320 /* roomInt-app.app */;
@@ -495,6 +498,7 @@
 			mainGroup = AE37C687273A1DB400B5B320;
 			packageReferences = (
 				AE4603EF2783B730009C11BB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AE4604202783E8E9009C11BB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = AE37C691273A1DB400B5B320 /* Products */;
 			projectDirPath = "";
@@ -880,6 +884,14 @@
 				kind = branch;
 			};
 		};
+		AE4604202783E8E9009C11BB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -987,6 +999,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE4603EF2783B730009C11BB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
+		};
+		AE4604212783E8E9009C11BB /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE4604202783E8E9009C11BB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

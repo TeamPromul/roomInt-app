@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CatalogCardsDesigner: View {
     let inter: Interior
@@ -17,11 +18,19 @@ struct CatalogCardsDesigner: View {
                 Text("Marrisa Fortuna")
                     .font(.system(size: 13, weight: .medium))
             }
-            Image("HomeBg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
-                .clipped()
+            if let image = inter.image {
+                WebImage(url: URL(string: image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
+            }else {
+                Image("HomeBg")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
+            }
             
             Text(inter.title)
                 .font(.system(size: 15, weight: .medium))
