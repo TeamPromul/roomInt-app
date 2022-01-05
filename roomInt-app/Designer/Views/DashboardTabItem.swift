@@ -39,6 +39,7 @@ struct DashboardTabItem: View {
             }
         }.onAppear() {
             repository.fetch()
+            SessionService.shared.setup()
         }
     }
 }

@@ -72,6 +72,13 @@
 		AE46041F2783D370009C11BB /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46041E2783D370009C11BB /* ImagePickerHelper.swift */; };
 		AE4604222783E8E9009C11BB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE4604212783E8E9009C11BB /* SDWebImageSwiftUI */; };
 		AE4604242783F5C2009C11BB /* SuccedModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4604232783F5C2009C11BB /* SuccedModalView.swift */; };
+		AE460426278432E6009C11BB /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE460425278432E6009C11BB /* SessionService.swift */; };
+		AE46042827843430009C11BB /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46042727843430009C11BB /* UserRepository.swift */; };
+		AE46042B27844CBF009C11BB /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46042A27844CBF009C11BB /* UserAuth.swift */; };
+		AE46042D278456FC009C11BB /* UserRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46042C278456FC009C11BB /* UserRegisterView.swift */; };
+		AE46042F2784A176009C11BB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE46042E2784A176009C11BB /* AppState.swift */; };
+		AE4604322784A4B1009C11BB /* LoadingButton in Frameworks */ = {isa = PBXBuildFile; productRef = AE4604312784A4B1009C11BB /* LoadingButton */; };
+		AE4604342784AB67009C11BB /* UserRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4604332784AB67009C11BB /* UserRegisterViewModel.swift */; };
 		AE613BCD27624C610001A5F3 /* CatalogTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */; };
 		AED875C227715F4A00DC20CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C127715F4A00DC20CA /* User.swift */; };
 		AED875C4277160A100DC20CA /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED875C3277160A100DC20CA /* Interior.swift */; };
@@ -128,6 +135,13 @@
 		AE46041C2783CFE2009C11BB /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		AE46041E2783D370009C11BB /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
 		AE4604232783F5C2009C11BB /* SuccedModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccedModalView.swift; sourceTree = "<group>"; };
+		AE460425278432E6009C11BB /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		AE46042727843430009C11BB /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		AE46042927844B7C009C11BB /* roomInt-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "roomInt-app.entitlements"; sourceTree = "<group>"; };
+		AE46042A27844CBF009C11BB /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		AE46042C278456FC009C11BB /* UserRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterView.swift; sourceTree = "<group>"; };
+		AE46042E2784A176009C11BB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AE4604332784AB67009C11BB /* UserRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterViewModel.swift; sourceTree = "<group>"; };
 		AE613BCC27624C610001A5F3 /* CatalogTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTabItem.swift; sourceTree = "<group>"; };
 		AED875C127715F4A00DC20CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AED875C3277160A100DC20CA /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
@@ -150,6 +164,7 @@
 				AE4604092783B730009C11BB /* FirebaseFunctionsSwift-Beta in Frameworks */,
 				AE4603F32783B730009C11BB /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				AE4604192783B730009C11BB /* FirebaseStorageSwift-Beta in Frameworks */,
+				AE4604322784A4B1009C11BB /* LoadingButton in Frameworks */,
 				AE4603F92783B730009C11BB /* FirebaseAuth in Frameworks */,
 				AE4604072783B730009C11BB /* FirebaseFunctions in Frameworks */,
 				AE4604222783E8E9009C11BB /* SDWebImageSwiftUI in Frameworks */,
@@ -177,6 +192,8 @@
 			children = (
 				A527AC93277DA160002132D4 /* FirebaseManager.swift */,
 				AE46041C2783CFE2009C11BB /* StorageService.swift */,
+				AE460425278432E6009C11BB /* SessionService.swift */,
+				AE46042E2784A176009C11BB /* AppState.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -186,6 +203,8 @@
 			children = (
 				A527AC96277DA1DF002132D4 /* UserViewModel.swift */,
 				A5E8F5AC277ED139006F3ABC /* InteriorViewModel.swift */,
+				AE46042727843430009C11BB /* UserRepository.swift */,
+				AE4604332784AB67009C11BB /* UserRegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -229,6 +248,7 @@
 		A5F90756277A2071006ED0BD /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				AE46042A27844CBF009C11BB /* UserAuth.swift */,
 				A5F90757277A207A006ED0BD /* Component */,
 				A5F907502779E088006ED0BD /* Signup */,
 				A5CCB7442779DB8A00ECAF13 /* Login */,
@@ -241,6 +261,7 @@
 			children = (
 				A5F90758277A20DC006ED0BD /* TextInput.swift */,
 				A5F9075C277A2D6F006ED0BD /* ForgotPasswordView.swift */,
+				AE46042C278456FC009C11BB /* UserRegisterView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -272,6 +293,7 @@
 		AE37C692273A1DB400B5B320 /* roomInt-app */ = {
 			isa = PBXGroup;
 			children = (
+				AE46042927844B7C009C11BB /* roomInt-app.entitlements */,
 				A5F90756277A2071006ED0BD /* Auth */,
 				A5CCB7422779DB2700ECAF13 /* GoogleService-Info.plist */,
 				AEBD8380273E418F00588D1A /* Constants */,
@@ -470,6 +492,7 @@
 				AE4604162783B730009C11BB /* FirebaseStorage */,
 				AE4604182783B730009C11BB /* FirebaseStorageSwift-Beta */,
 				AE4604212783E8E9009C11BB /* SDWebImageSwiftUI */,
+				AE4604312784A4B1009C11BB /* LoadingButton */,
 			);
 			productName = "roomInt-app";
 			productReference = AE37C690273A1DB400B5B320 /* roomInt-app.app */;
@@ -502,6 +525,7 @@
 			packageReferences = (
 				AE4603EF2783B730009C11BB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AE4604202783E8E9009C11BB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				AE4604302784A4B1009C11BB /* XCRemoteSwiftPackageReference "LoadingButton" */,
 			);
 			productRefGroup = AE37C691273A1DB400B5B320 /* Products */;
 			projectDirPath = "";
@@ -536,6 +560,7 @@
 				A5647C2E2767AF8700EDDF81 /* PrimaryButtonStyle.swift in Sources */,
 				A5647C2527678BE100EDDF81 /* SplashScreen.swift in Sources */,
 				A5647C302767B23900EDDF81 /* SecondaryButtonStyle.swift in Sources */,
+				AE46042F2784A176009C11BB /* AppState.swift in Sources */,
 				AE37C696273A1DB400B5B320 /* ContentView.swift in Sources */,
 				AE2E32F427560C8700C71E48 /* BoxCards.swift in Sources */,
 				AEE5CDEE2768306000C98C84 /* ConsultTabItem.swift in Sources */,
@@ -554,9 +579,12 @@
 				AEE5CDF0276834B300C98C84 /* CustomerView.swift in Sources */,
 				AE4603DC2780A98A009C11BB /* DashboardTabItem.swift in Sources */,
 				AED875C82771634200DC20CA /* CatalogCards.swift in Sources */,
+				AE46042D278456FC009C11BB /* UserRegisterView.swift in Sources */,
 				AE2E32F227560C4F00C71E48 /* RactangleCards.swift in Sources */,
 				AE2E32EE2756071900C71E48 /* HomeTabItem.swift in Sources */,
+				AE46042827843430009C11BB /* UserRepository.swift in Sources */,
 				AE613BCD27624C610001A5F3 /* CatalogTabItem.swift in Sources */,
+				AE46042B27844CBF009C11BB /* UserAuth.swift in Sources */,
 				AEF6BFCD27675A38008DB169 /* Bubble.swift in Sources */,
 				AEF6BFC827671CBE008DB169 /* CatalogCollection.swift in Sources */,
 				AE37C694273A1DB400B5B320 /* roomInt_appApp.swift in Sources */,
@@ -575,10 +603,12 @@
 				A5647C3627681D3C00EDDF81 /* OnBoardingViewModel.swift in Sources */,
 				A5647C342767C54D00EDDF81 /* OnBoardingBridge.swift in Sources */,
 				A5F9075D277A2D6F006ED0BD /* ForgotPasswordView.swift in Sources */,
+				AE460426278432E6009C11BB /* SessionService.swift in Sources */,
 				AE233E2B277A05350042A6AF /* KeyboardResponder.swift in Sources */,
 				A5647C292767A13A00EDDF81 /* OnBoarding.swift in Sources */,
 				AE233E252779EC240042A6AF /* ChatBubble.swift in Sources */,
 				AE4603D82780A24A009C11BB /* UploadInteriorView.swift in Sources */,
+				AE4604342784AB67009C11BB /* UserRegisterViewModel.swift in Sources */,
 				AE4603E827829873009C11BB /* CategoryStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,10 +683,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "roomInt-app/roomInt-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"roomInt-app/Preview Content\"";
-				DEVELOPMENT_TEAM = 4SN74J4HZJ;
+				DEVELOPMENT_TEAM = 4VR7S48W5N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -670,7 +701,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ranggaw.roomInt-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rangga.roomInt-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -799,10 +830,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "roomInt-app/roomInt-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"roomInt-app/Preview Content\"";
-				DEVELOPMENT_TEAM = 4SN74J4HZJ;
+				DEVELOPMENT_TEAM = 4VR7S48W5N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -816,7 +848,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ranggaw.roomInt-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rangga.roomInt-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -829,10 +861,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "roomInt-app/roomInt-app.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"roomInt-app/Preview Content\"";
-				DEVELOPMENT_TEAM = 4SN74J4HZJ;
+				DEVELOPMENT_TEAM = 4VR7S48W5N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -846,7 +879,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ranggaw.roomInt-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rangga.roomInt-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -894,6 +927,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		AE4604302784A4B1009C11BB /* XCRemoteSwiftPackageReference "LoadingButton" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Changemin/LoadingButton";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1008,6 +1049,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE4604202783E8E9009C11BB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		AE4604312784A4B1009C11BB /* LoadingButton */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE4604302784A4B1009C11BB /* XCRemoteSwiftPackageReference "LoadingButton" */;
+			productName = LoadingButton;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

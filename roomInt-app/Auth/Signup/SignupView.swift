@@ -16,6 +16,7 @@ struct SignupView: View {
     @State var isShowImagePicker = false
 
     @StateObject private var viewModel = UserViewModel()
+    
 
 
     var body: some View {
@@ -111,9 +112,6 @@ struct SignupView: View {
                             }
                             .buttonStyle(AuthButtonStyle())
                         }
-
-
-
 
                         HStack {
                             Text("Already have an account? ")
