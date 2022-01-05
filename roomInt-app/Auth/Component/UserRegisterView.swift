@@ -11,7 +11,6 @@ import LoadingButton
 struct UserRegisterView: View {
     @Environment(\.openURL) var openURL
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    //@StateObject private var viewModel = UserViewModel()
     @StateObject var viewModel: ViewModel
     
     @State var isCheck = false

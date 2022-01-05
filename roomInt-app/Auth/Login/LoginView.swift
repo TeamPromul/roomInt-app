@@ -9,16 +9,26 @@ import SwiftUI
 import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
+import LoadingButton
 
 struct LoginView: View {
     @State private var isActive = false
     @State private var isLoginActive = false
     @StateObject private var viewModel = UserViewModel()
+    @ObservedObject var session = SessionService.shared
     
     @EnvironmentObject var userAuth: UserAuth
     @State var currentNonce: String?
     @State var regist = false
+    @State var signUp = false
     
+    var style = LoadingButtonStyle(width: .infinity,
+                                   height: 50,
+                                   cornerRadius: 20,
+                                   backgroundColor: Color.primaryColor,
+                                   loadingColor: Color.primaryColor.opacity(0.5),
+                                   strokeWidth: 5,
+                                   strokeColor: .white)
     
     init() {
         let navBarAppearance = UINavigationBar.appearance()
@@ -74,10 +84,15 @@ struct LoginView: View {
     
     var body: some View {
         if viewModel.isLoginSuccess {
-            DesignerView()
+            if let user = session.user {
+                if user.isDesainer {
+                    DesignerView()
+                }else {
+                    CustomerView()
+                }
+            }
         }else {
             NavigationView {
-                //GeometryReader { proxy in
                 ScrollView {
                     Image("logo")
                         .resizable()
@@ -99,16 +114,13 @@ struct LoginView: View {
                         
                     }.padding(.bottom, 80)
                     
-                    Button(action: {
-                        Task {
-                            await viewModel.login()
-                        }
-                        
-                    }) {
+                    LoadingButton(action: {
+                        viewModel.login()
+                    }, isLoading: $viewModel.doneSignIn, style: style) {
                         Text("Login")
-                    }
-                    .buttonStyle(AuthButtonStyle())
-                    .padding(.horizontal)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }.padding(.horizontal)
                     
                     SignInWithAppleButton(
                         onRequest: { request in
@@ -140,7 +152,6 @@ struct LoginView: View {
                                             print(error?.localizedDescription as Any)
                                             return
                                         }
-                                        // print("signed in")
                                         self.regist.toggle()
                                     }
                                 default:
@@ -161,7 +172,7 @@ struct LoginView: View {
                     
                     HStack {
                         Text("Already have an account? ")
-                        NavigationLink(destination: SignupView(), isActive: $isActive) {
+                        NavigationLink(destination: SignupView(isPresented: $isActive), isActive: $isActive) {
                             Button {
                                 isActive.toggle()
                             } label: {
@@ -172,7 +183,6 @@ struct LoginView: View {
                     }
                     .padding()
                 }
-                //  }
                 .padding(.horizontal, 16)
                 .navigationTitle("Login")
                 .navigationBarBackButtonHidden(true)

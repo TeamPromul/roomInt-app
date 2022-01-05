@@ -6,37 +6,52 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileTabItem: View {
-
+    
     @ObservedObject private var viewModel = UserViewModel()
-
+    
     var profileItem = ["Edit Name", "Shipping Info", "Notification", "Terms & Condition"]
     @Binding var navBarTitle: String
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            if #available(iOS 15.0, *) {
-                AsyncImage(url: URL(string: viewModel.userData.photo!)) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 48, height: 48)
-                        .clipShape(Circle())
-                } placeholder: {
+                if let user = viewModel.user {
+                    if let image = viewModel.user?.photo {
+                        HStack {
+                            WebImage(url: URL(string: image))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 48, height: 48)
+                                    .clipShape(Circle())
+                            VStack(alignment: .leading, spacing: 10){
+                                Text(user.name)
+                                    .font(.system(size: 18, weight: .semibold))
+                                Text(user.phoneNumber)
+                                    .font(.system(size: 15, weight: .regular))
+                                    .foregroundColor(.gray)
+                            }
+                        }.padding()
+                    } else {
+                        HStack {
+                            Image(systemName: "person")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 48, height: 48)
+                                .clipShape(Circle())
+                            VStack(alignment: .leading, spacing: 10){
+                                Text(user.name)
+                                    .font(.system(size: 18, weight: .semibold))
+                                Text(user.phoneNumber)
+                                    .font(.system(size: 15, weight: .regular))
+                                    .foregroundColor(.gray)
+                            }
+                        }.padding()
+                    }
+                } else {
                     ProgressView()
                 }
-
-                VStack(alignment: .leading, spacing: 10){
-                    Text(viewModel.userData.name)
-                        .font(.system(size: 18, weight: .semibold))
-                    Text(viewModel.userData.email)
-                        .font(.system(size: 15, weight: .regular))
-                        .foregroundColor(.gray)
-
-                }
-            } else {
-                // Fallback on earlier versions
-            }
+            
             ForEach(profileItem, id: \.self) { item in
                     HStack {
                         Text(item)
@@ -47,8 +62,7 @@ struct ProfileTabItem: View {
                     }.padding()
                 }
             Button {
-//                viewModel.logout()
-                print(viewModel.userData)
+                viewModel.logout()
             }label: {
                 Text("Logout")
                     .font(.system(size: 15, weight: .regular))
@@ -57,12 +71,13 @@ struct ProfileTabItem: View {
             .padding(.horizontal)
             Spacer()
         }.padding()
+            .onAppear {
+                self.navBarTitle = "Profile"
+            }
         
-        .onAppear {
-            self.navBarTitle = "Profile"
-        }
     }
 }
+
 
 struct ProfileTabItem_Previews: PreviewProvider {
     static var previews: some View {
