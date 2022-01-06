@@ -6,18 +6,30 @@
 //
 
 import SwiftUI
+import LoadingButton
 
 struct SignupView: View {
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
-
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @StateObject var viewModel: ViewModel
     @State var isCheck = false
     @State var isSignupActive = false
     @State var isShowImagePicker = false
-
-    @StateObject private var viewModel = UserViewModel()
-
-
+    
+    var style = LoadingButtonStyle(width: .infinity,
+                                   height: 50,
+                                   cornerRadius: 20,
+                                   backgroundColor: Color.primaryColor,
+                                   loadingColor: Color.primaryColor.opacity(0.5),
+                                   strokeWidth: 5,
+                                   strokeColor: .white)
+    
+    init(isPresented: Binding<Bool>) {
+        let viewModel = ViewModel(isPresented: isPresented)
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
         ZStack {
             Image("bg-signup")
@@ -28,9 +40,9 @@ struct SignupView: View {
                         Button {
                             isShowImagePicker.toggle()
                         } label: {
-                            if let image = viewModel.image {
+                            if !viewModel.imageUpload.isEmpty {
                                 VStack {
-                                    Image(uiImage: image)
+                                    Image(uiImage: viewModel.imageUpload[0])
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: 100, height: 100)
@@ -55,7 +67,7 @@ struct SignupView: View {
                                         }
                                         Image("icon-plus")
                                             .padding(.bottom, 14)
-
+                                        
                                     }
                                     Text("Tambah foto profil")
                                         .font(.system(size: 10))
@@ -63,7 +75,7 @@ struct SignupView: View {
                                         .foregroundColor(.black)
                                 }
                             }
-
+                            
                         }.padding(.top, 100)
                         
                         VStack(spacing: 10) {
@@ -71,8 +83,24 @@ struct SignupView: View {
                             TextInput(text: $viewModel.userData.email, placeholder: "Email", keyboardType: .emailAddress, isPass: false)
                             TextInput(text: $viewModel.userData.phoneNumber, placeholder: "Nomor HP", keyboardType: .phonePad, isPass: false)
                             TextInput(text: $viewModel.userData.password, placeholder: "Password", keyboardType: .default, isPass: true)
+                            HStack {
+                                Text("Select Your Role")
+                                    .foregroundColor(Color.secondaryColor)
+                                Spacer()
+                                Picker("Role", selection: $viewModel.userData.isDesainer, content: {
+                                    Text("Designer").tag(true)
+                                    Text("Customer").tag(false)
+                                })
+                                    .padding(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .strokeBorder(Color.primaryColor, lineWidth: 2)
+                                    )
+                                    .background(RoundedRectangle(cornerRadius: 40).fill(Color.white))
+                                
+                            }
                         }.padding(.bottom, 50)
-
+                        
                         HStack(spacing: 0) {
                             Button {
                                 isCheck.toggle()
@@ -83,7 +111,7 @@ struct SignupView: View {
                                     .foregroundColor(.primaryColor)
                                     .padding(.trailing, 10)
                             }
-
+                            
                             Text("I have read and agree")
                                 .font(.system(size: 14, weight: .bold))
                                 .padding(.trailing, 2)
@@ -96,25 +124,16 @@ struct SignupView: View {
                             }
                             Spacer()
                         }
-                        NavigationLink(destination: CustomerView(), isActive: $isSignupActive) {
-                            Button(action: {
-                                Task {
-                                    await viewModel.signup()
-                                }
-                                isSignupActive.toggle()
-                                print("photo: \(viewModel.userData.photo)")
-                                print("email: \(viewModel.userData.email)")
-                                print("name: \(viewModel.userData.name)")
-                            }) {
-                                Text("Signup")
-                                    .frame(width: proxy.size.width)
-                            }
-                            .buttonStyle(AuthButtonStyle())
+                        
+                        LoadingButton(action: {
+                            viewModel.signup()
+                        }, isLoading: $viewModel.doneSignUp, style: style) {
+                            Text("SignUp")
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
-
-
-
-
+                        
+                        
                         HStack {
                             Text("Already have an account? ")
                             Button {
@@ -123,7 +142,7 @@ struct SignupView: View {
                                 Text("Login")
                                     .foregroundColor(.secondaryColor)
                             }
-
+                            
                         }.padding()
                     }
                 }
@@ -132,8 +151,11 @@ struct SignupView: View {
         }
         .navigationTitle("Sign up")
         .navigationBarBackButtonHidden(true)
-        .fullScreenCover(isPresented: $isShowImagePicker, onDismiss: nil) {
-            ImagePicker(image: $viewModel.image)
+        .sheet(isPresented: $isShowImagePicker) {
+            ImagePickerHelper(sourceType: sourceType, pickerResult: $viewModel.imageUpload)
+        }
+        .alert(isPresented: $viewModel.isAlertShow ) {
+            Alert(title: Text("SignUp failed"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Ok")))
         }
     }
 }
@@ -141,7 +163,7 @@ struct SignupView: View {
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SignupView()
+            SignupView(isPresented: .constant(true))
         }
     }
 }

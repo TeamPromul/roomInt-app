@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnBoardingBridge: View {
     @ObservedObject var viewModel = OnBoardingViewModel()
+    @EnvironmentObject var userAuth: UserAuth
+    
     var body: some View {
         if !viewModel.onboarding {
             OnBoarding()
@@ -17,7 +19,6 @@ struct OnBoardingBridge: View {
             LoginView()
                 .overlay(SplashScreen())
         }
-
     }
 }
 

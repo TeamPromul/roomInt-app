@@ -16,17 +16,6 @@ class InteriorViewModel: ObservableObject {
     @Published var listInterior = [Interior]()
 
     private let store = Firestore.firestore().collection("Interiors")
-
-//    func fetchDataInterior() async {
-//        do {
-//            let documentSnapshot = try await FirebaseManager.shared.firestore.collection("User")
-//                .whereField("isDesainer", isEqualTo: true)
-//                .getDocuments()
-//            print(<#T##items: Any...##Any#>)
-//        } catch {
-//            print(error)
-//        }
-//    }
     
     init() {
         fetch()

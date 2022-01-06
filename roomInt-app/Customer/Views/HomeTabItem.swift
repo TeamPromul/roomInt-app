@@ -28,9 +28,9 @@ struct HomeTabItem: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/3)
                     .scaledToFill()
-                SearchBar()
-                    .padding()
-                    .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
+//                SearchBar()
+//                    .padding()
+//                    .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
             }
             VStack(alignment: .leading) {
                 Text("Available")

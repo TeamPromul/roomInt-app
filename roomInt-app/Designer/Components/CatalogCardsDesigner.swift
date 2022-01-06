@@ -15,7 +15,7 @@ struct CatalogCardsDesigner: View {
             HStack {
                 Image(systemName: "person")
                     .font(.system(size: 13, weight: .medium))
-                Text("Marrisa Fortuna")
+                Text(inter.userName)
                     .font(.system(size: 13, weight: .medium))
             }
             if let image = inter.image {
@@ -25,7 +25,7 @@ struct CatalogCardsDesigner: View {
                     .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
                     .clipped()
             }else {
-                Image("HomeBg")
+                Image("Bed")
                     .resizable()
                     .scaledToFill()
                     .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
@@ -38,6 +38,7 @@ struct CatalogCardsDesigner: View {
                 .font(.system(size: 10, weight: .regular))
             Text(inter.price)
                 .font(.system(size: 10, weight: .regular))
+            
         }
     }
 }

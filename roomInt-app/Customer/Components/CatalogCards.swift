@@ -6,52 +6,38 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CatalogCards: View {
-    let interiors: Interior
+    let inter: Interior
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Image(systemName: "person")
                     .font(.system(size: 13, weight: .medium))
-                Text("Marrisa Fortuna")
+                Text(inter.userName)
                     .font(.system(size: 13, weight: .medium))
             }
-            Image("HomeBg")
-                .resizable()
-                .scaledToFill()
-                .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
-                .clipped()
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(interiors.title)
-                        .font(.system(size: 15, weight: .medium))
-                    Text(interiors.category.rawValue)
-                        .font(.system(size: 10, weight: .regular))
-                    Text(interiors.price)
-                        .font(.system(size: 10, weight: .regular))
-                }
-                Spacer()
-                HStack {
-                    Image(systemName: "ellipsis.bubble")
-                        .foregroundColor(Color.secondaryColor)
-                        .font(.system(size: 13, weight: .semibold))
-                    Button {
-                        
-                    }label: {
-                         Text("Talk to Us")
-                            .foregroundColor(.black)
-                            .font(.system(size: 13, weight: .semibold))
-                    }
-                    
-                }
-                .padding(10)
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
-                
+            if let image = inter.image {
+                WebImage(url: URL(string: image))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
+            }else {
+                Image("Bed")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .clipped()
             }
+            
+            Text(inter.title)
+                .font(.system(size: 15, weight: .medium))
+            Text(inter.category.rawValue)
+                .font(.system(size: 10, weight: .regular))
+            Text(inter.price)
+                .font(.system(size: 10, weight: .regular))
             
         }
     }

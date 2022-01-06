@@ -23,6 +23,7 @@ struct AuthButtonStyle: ButtonStyle {
         var body: some View {
             return configuration.label
                 .font(.system(size: 20, weight: .bold))
+                .frame(maxWidth: .infinity)
                 .foregroundColor(.white)
                 .padding(.vertical, 12)
                 .background(

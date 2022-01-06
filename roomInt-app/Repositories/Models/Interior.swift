@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Interior: Codable, Identifiable {
+struct Interior: Codable, Identifiable, Hashable {
     var id = UUID().uuidString
+    var userName: String
     var image: String
     var title: String
     var category: Category
@@ -26,5 +27,5 @@ enum Category: String, Codable, CaseIterable {
 
 
 extension Interior {
-    static let preview = Interior(image: "HomeBg", title: "Living Room like office", category: .livingRoom, price: "Rp. 500.000")
+    static let preview = Interior(userName: "Rangga", image: "HomeBg", title: "Living Room like office", category: .livingRoom, price: "Rp. 500.000")
 }
