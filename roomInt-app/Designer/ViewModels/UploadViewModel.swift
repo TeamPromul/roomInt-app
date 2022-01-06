@@ -20,6 +20,10 @@ extension UploadInteriorView {
         @Published var docRef: DocumentReference?
         @Published var image = [UIImage]()
         @Published var errorMessage = ""
+        @Published var inter = Interior(image: "", title: "", category: .all, price: "")
+        
+        @Published var doneUpload = false
+        @Published var isPresented = false
         
         @ObservedObject var sessionService = SessionService.shared
         @ObservedObject private var UserRepository: UserRepository = .shared
@@ -27,50 +31,30 @@ extension UploadInteriorView {
         @Published var user: User?
         
         func placeOrder() {
-            var inter = Interior(image: "", title: "", category: .all, price: "")
+            
             sessionService.setup()
-            
-            inter.title = self.title
-            inter.image = "test"
-            inter.category = self.category
-            inter.price = self.price
-            
-            var user = self.sessionService.user
-            user?.interiors?.append(inter)
-            if let user = user {
-                self.UserRepository.update(customer: user) { user in
-                    self.user = user
+            guard let imageUpload = image.first else { return }
+            StorageService.shared.upload(image: imageUpload, path: "\(UUID().uuidString)") { url, _ in
+
+                guard let url = url?.absoluteString else { return }
+
+                self.inter.title = self.title
+                self.inter.image = url
+                self.inter.category = self.category
+                self.inter.price = self.price
+
+                var user = self.sessionService.user
+                user?.interiors?.append(self.inter)
+                if let user = user {
+                    self.UserRepository.update(customer: user) { user in
+                        self.user = user
+                        self.doneUpload = true
+                        self.isPresented.toggle()
+                
+                    }
+
                 }
-                
-            } else {
-                print("no user")
-                
             }
-            
-//            guard let imageUpload = image.first else { return }
-//
-//            StorageService.shared.upload(image: imageUpload, path: "\(UUID().uuidString)") { url, _ in
-//
-//                guard let url = url?.absoluteString else { return }
-//
-//                inter.title = self.title
-//                inter.image = url
-//                inter.category = self.category
-//                inter.price = self.price
-//
-//                //InteriorViewModel.shared.add(inter: inter)
-//
-//                //self.addNewInterior(inter: inter)
-//
-//                var user = self.sessionService.user
-//                user?.interiors?.append(inter)
-//                if let user = user {
-//                    self.UserRepository.update(customer: user) { user in
-//                        self.user = user
-//                    }
-//
-//                }
-//            }
             
         }
         
@@ -82,17 +66,5 @@ extension UploadInteriorView {
                 }
             }
         }
-        /*
-         
-         func addNew(motor: Motor) {
-             if case .customer(var customer) = sessionService.user {
-                 customer.motors?.append(motor)
-                 customerRepository.update(customer: customer) { customer in
-                     self.customer = customer
-                 }
-             }
-         }
-         */
-        
     }
 }

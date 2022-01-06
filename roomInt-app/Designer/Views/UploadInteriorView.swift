@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LoadingButton
 
 struct UploadInteriorView: View {
     @StateObject private var viewModel: ViewModel
@@ -13,16 +14,42 @@ struct UploadInteriorView: View {
     @State var showImagePicker: Bool = false
     @State private var showActionSheet = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var isPresented = false
     
     init() {
         _viewModel = StateObject(wrappedValue: ViewModel())
     }
     
+    var style = LoadingButtonStyle(width: .infinity,
+                                   height: 50,
+                                   cornerRadius: 20,
+                                   backgroundColor: Color.secondaryColor,
+                                   loadingColor: Color.secondaryColor.opacity(0.5),
+                                   strokeWidth: 5,
+                                   strokeColor: .white)
+    
     var body: some View {
         VStack(alignment: .center) {
+            if viewModel.image == [] {
+                Image(systemName: "square.dashed.inset.filled")
+                    .resizable()
+                    .frame(height: UIScreen.main.bounds.height/3)
+                    .scaledToFill()
+                    .padding(.bottom, 10.0)
+                    .foregroundColor(Color.primaryColor)
+                    .padding()
+                
+            } else {
+                if let image = viewModel.image {
+                    Image(uiImage: image[0])
+                        .resizable()
+                        .frame(height: UIScreen.main.bounds.height/3)
+                        .scaledToFill()
+                        .padding(.bottom, 10.0)
+                }
+            }
+            uploadButton()
             Form {
-                Section(header: Text("Design Interior")) {
+                Section(header: Text("Description")) {
                     TextField("Title",text: $viewModel.title)
                     TextField("Price", text: $viewModel.price)
                     Picker(selection: $viewModel.category, label: Text("Select Category")) {
@@ -31,32 +58,18 @@ struct UploadInteriorView: View {
                         }
                     }
                 }
-                if viewModel.image == [] {
-                    Image(systemName: "square.dashed.inset.filled")
-                        .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
-                        .padding(.bottom, 10.0)
-                        .foregroundColor(Color.primaryColor)
-                } else {
-                    if let image = viewModel.image {
-                        Image(uiImage: image[0])
-                            .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
-                            .padding(.bottom, 10.0)
-                    }
-                }
-                uploadButton()
+                
             }
             
-            Button {
+            LoadingButton(action: {
                 viewModel.placeOrder()
-                self.isPresented.toggle()
-            }label: {
+            }, isLoading: $viewModel.doneUpload, style: style) {
                 Text("Upload")
-                    .padding(.horizontal, 80)
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            .fullScreenCover(isPresented: $isPresented, onDismiss: {
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }.padding(.horizontal)
+            
+            .fullScreenCover(isPresented: $viewModel.isPresented, onDismiss: {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 SuccedModalView()
@@ -65,7 +78,7 @@ struct UploadInteriorView: View {
     }
     
     @ViewBuilder func uploadButton() -> some View {
-        Button("Unggah"){
+        Button("Add Image"){
             self.showActionSheet.toggle()
         }
         
