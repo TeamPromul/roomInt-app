@@ -15,10 +15,10 @@ struct CatalogTabItem: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             
-            SearchBar()
-                .padding(.horizontal)
-                .padding(.top)
-                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
+//            SearchBar()
+//                .padding(.horizontal)
+//                .padding(.top)
+//                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
             
             ScrollView(.horizontal) {
                 HStack {

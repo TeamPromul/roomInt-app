@@ -22,9 +22,9 @@ struct User: Codable {
 extension User {
     static let preview = User(name: "Rangga", email: "dirgabuwono@gmail.com",password: "", phoneNumber: "085156090022", isDesainer: false)
     static let previewDesainer = User(name: "Lita Batara", email: "litabatara20@gmail.com", password: "", phoneNumber: "08983226781",isDesainer: true, interiors: [
-        Interior(image: "InteriorPreview", title: "Light Modern", category: .livingRoom, price: "Rp 500.000"),
-        Interior(image: "InteriorPreview", title: "Light Modern", category: .bedroom, price: "Rp 400.000"),
-        Interior(image: "InteriorPreview", title: "Light Modern", category: .kitchen, price: "Rp 300.000")
+        Interior(userName: "Dicky", image: "InteriorPreview", title: "Light Modern", category: .livingRoom, price: "Rp 500.000"),
+        Interior(userName: "Dicky", image: "InteriorPreview", title: "Light Modern", category: .bedroom, price: "Rp 400.000"),
+        Interior(userName: "Dicky", image: "InteriorPreview", title: "Light Modern", category: .kitchen, price: "Rp 300.000")
     ])
 
     static var new: User {

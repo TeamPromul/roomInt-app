@@ -10,6 +10,12 @@ import SwiftUI
 struct DesignerView: View {
     @State private var navBarTitle = "Find Your Design"
     @State var showNewView = false
+    init() {
+        let standardAppearance = UITabBarAppearance()
+        UITabBar.appearance().backgroundColor = UIColor(Color.white)
+        standardAppearance.backgroundColor = UIColor(Color.white)
+        UITabBar.appearance().standardAppearance = standardAppearance
+    }
     var body: some View {
         NavigationView {
             TabView {
@@ -32,6 +38,7 @@ struct DesignerView: View {
                     }
             }
             .navigationTitle("Designer")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     NavigationLink(destination: UploadInteriorView(), isActive: $showNewView) {
                 Button {
