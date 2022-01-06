@@ -25,6 +25,7 @@
 		A5F90759277A20DC006ED0BD /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F90758277A20DC006ED0BD /* TextInput.swift */; };
 		A5F9075B277A2BF4006ED0BD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9075A277A2BF4006ED0BD /* LoginView.swift */; };
 		A5F9075D277A2D6F006ED0BD /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9075C277A2D6F006ED0BD /* ForgotPasswordView.swift */; };
+		AE077AAA27874B4A001C757B /* CatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE077AA927874B4A001C757B /* CatalogViewModel.swift */; };
 		AE15009D27869619004AA343 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15009C27869619004AA343 /* DashboardViewModel.swift */; };
 		AE15009F2786B099004AA343 /* SearchBarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15009E2786B099004AA343 /* SearchBarComponent.swift */; };
 		AE233E1F2779E50D0042A6AF /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE233E1E2779E50D0042A6AF /* ChatList.swift */; };
@@ -111,6 +112,7 @@
 		A5F90758277A20DC006ED0BD /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		A5F9075A277A2BF4006ED0BD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A5F9075C277A2D6F006ED0BD /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		AE077AA927874B4A001C757B /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 		AE15009C27869619004AA343 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		AE15009E2786B099004AA343 /* SearchBarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarComponent.swift; sourceTree = "<group>"; };
 		AE233E1E2779E50D0042A6AF /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 		AEBD837C273E414100588D1A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AE077AA927874B4A001C757B /* CatalogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				AE460426278432E6009C11BB /* SessionService.swift in Sources */,
 				AE233E2B277A05350042A6AF /* KeyboardResponder.swift in Sources */,
 				A5647C292767A13A00EDDF81 /* OnBoarding.swift in Sources */,
+				AE077AAA27874B4A001C757B /* CatalogViewModel.swift in Sources */,
 				AE233E252779EC240042A6AF /* ChatBubble.swift in Sources */,
 				AE4603D82780A24A009C11BB /* UploadInteriorView.swift in Sources */,
 				AE4604342784AB67009C11BB /* UserRegisterViewModel.swift in Sources */,

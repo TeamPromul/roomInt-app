@@ -22,7 +22,8 @@ struct OnBoarding: View {
                         Group {
                             Image("Illustration\(index + 1)")
                                 .resizable()
-                                .frame(width: 345, height: 309, alignment: .center)
+                                .scaledToFit()
+                                .frame(maxWidth: 400, alignment: .center)
                             Group {
                                 Text(viewModel.textTitle[index])
                                     .textH3Bold()

@@ -36,6 +36,7 @@ struct DashboardTabItem: View {
             ScrollView(showsIndicators: false) {
                 PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                     viewModel.fetchInter()
+                    viewModel.filterInter()
                 }
                 
                 ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
@@ -48,6 +49,7 @@ struct DashboardTabItem: View {
         }.onAppear() {
             SessionService.shared.setup()
             viewModel.fetchInter()
+            viewModel.filterInter()
         }.coordinateSpace(name: "pullToRefresh")
     }
 }

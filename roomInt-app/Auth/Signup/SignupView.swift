@@ -83,6 +83,22 @@ struct SignupView: View {
                             TextInput(text: $viewModel.userData.email, placeholder: "Email", keyboardType: .emailAddress, isPass: false)
                             TextInput(text: $viewModel.userData.phoneNumber, placeholder: "Nomor HP", keyboardType: .phonePad, isPass: false)
                             TextInput(text: $viewModel.userData.password, placeholder: "Password", keyboardType: .default, isPass: true)
+                            HStack {
+                                Text("Select Your Role")
+                                    .foregroundColor(Color.secondaryColor)
+                                Spacer()
+                                Picker("Role", selection: $viewModel.userData.isDesainer, content: {
+                                    Text("Designer").tag(true)
+                                    Text("Customer").tag(false)
+                                })
+                                    .padding(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 40)
+                                            .strokeBorder(Color.primaryColor, lineWidth: 2)
+                                    )
+                                    .background(RoundedRectangle(cornerRadius: 40).fill(Color.white))
+                                
+                            }
                         }.padding(.bottom, 50)
                         
                         HStack(spacing: 0) {

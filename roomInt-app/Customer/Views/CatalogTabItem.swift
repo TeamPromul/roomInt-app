@@ -11,34 +11,42 @@ struct CatalogTabItem: View {
     @State private var mode: Int = 0
     @Binding var navBarTitle: String
     @State var category: Category = .all
-    @ObservedObject private var repository: InteriorViewModel = .shared
+    @StateObject private var viewModel = ViewModel()
+    @State var search = ""
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            
-//            SearchBar()
-//                .padding(.horizontal)
-//                .padding(.top)
-//                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
+        VStack {
+            SearchBarComponent(text: $search)
+                .padding(.horizontal)
+                .padding(.top)
+                .shadow(color: .black.opacity(0.2), radius: 5, x: -4, y: 3)
             
             ScrollView(.horizontal) {
                 HStack {
                     ForEach(Category.allCases, id: \.self) { item in
-                        CategoryStack(cats: item, isSelected: self.category == item, onSelect: { selectedValue in
-                            self.category = selectedValue
+                        CategoryStack(cats: item, isSelected: self.viewModel.category == item, onSelect: { selectedValue in
+                            self.viewModel.category = selectedValue
                         })
                             .padding(.horizontal, 10)
                             .padding(.top, 5)
                     }
                 }
-            }.padding()
+            }.padding(.horizontal)
+            Divider()
+                .padding(.vertical, 10)
             
-            ForEach(repository.listInterior, id: \.id) {item in
-                CatalogCards(interiors: item)
-                    .padding(.horizontal)
-                    .padding(.vertical)
+            ScrollView(showsIndicators: false) {
+                PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                    viewModel.fetchAllUser()
+                }
+                ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
+                    CatalogCards(inter: item)
+                        .padding(.horizontal)
+                        .padding(.vertical)
+                }
             }
         }
         .onAppear {
+            viewModel.fetchAllUser()
             self.navBarTitle = "Catalog"
         }
     }
