@@ -38,11 +38,20 @@ struct CatalogTabItem: View {
                 PullToRefresh(coordinateSpaceName: "pullToRefresh") {
                     viewModel.fetchAllUser()
                 }
-                ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
-                    CatalogCards(inter: item)
-                        .padding(.horizontal)
-                        .padding(.vertical)
+                if viewModel.category == .all {
+                    ForEach(viewModel.interiors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
+                        CatalogCards(inter: item)
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                    }
+                }else {
+                    ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
+                        CatalogCards(inter: item)
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                    }
                 }
+               
             }
         }
         .onAppear {

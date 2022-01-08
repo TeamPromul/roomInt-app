@@ -31,7 +31,7 @@ struct SearchBarComponent: View {
         }
         .frame(maxWidth: .infinity, maxHeight: 8, alignment: .leading)
         .padding()
-        .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+        .background(RoundedRectangle(cornerRadius: 15).fill(Color.serachBarBg))
     }
 }
 

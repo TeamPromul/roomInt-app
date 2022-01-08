@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ConsultDesignTabItem: View {
+    @Binding var navBarTitle: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Coming Soon")
+            .onAppear {
+                self.navBarTitle = "Consult"
+            }
     }
 }
 
 struct ConsultDesignTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        ConsultDesignTabItem()
+        ConsultDesignTabItem(navBarTitle: .constant("Consult"))
     }
 }

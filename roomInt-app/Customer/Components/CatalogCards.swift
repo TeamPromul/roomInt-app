@@ -22,13 +22,13 @@ struct CatalogCards: View {
                 WebImage(url: URL(string: image))
                     .resizable()
                     .scaledToFill()
-                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.5,  alignment: .center)
                     .clipped()
             }else {
                 Image("Bed")
                     .resizable()
                     .scaledToFill()
-                    .frame(height: UIScreen.main.bounds.height/3.5, alignment: .center)
+                    .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height/3.5,  alignment: .center)
                     .clipped()
             }
             
@@ -43,10 +43,9 @@ struct CatalogCards: View {
     }
 }
 
-//struct CatalogCards_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatalogCards(interiors: Interior()
-//            .previewLayout(.sizeThatFits)
-//            .padding()
-//    }
-//}
+struct CatalogCards_Previews: PreviewProvider {
+    static var previews: some View {
+        CatalogCards(inter: Interior.preview)
+        
+    }
+}

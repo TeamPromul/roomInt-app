@@ -44,7 +44,7 @@ extension CatalogTabItem {
         func filterInter() {
             $category.sink { [self] segment in
                 self.filteredInteriors = interiors.filter { inter in
-                    if segment == .all { return inter.category == .all} else if segment == .livingRoom { return inter.category == .livingRoom } else if segment == .bedroom { return inter.category == .bedroom} else { return inter.category == .kitchen}
+                    if segment == .livingRoom { return inter.category == .livingRoom } else if segment == .bedroom { return inter.category == .bedroom} else { return inter.category == .kitchen}
                 }
             }.store(in: &subscriptions)
         }

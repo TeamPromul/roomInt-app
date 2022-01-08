@@ -8,72 +8,97 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
+
 struct ProfileDesignTabItem: View {
     @StateObject private var viewModel = UserViewModel()
+    @Binding var navBarTitle: String
     
-    var profileItem = ["Edit Name", "Shipping Info", "Notification", "Terms & Condition"]
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-                if let user = viewModel.user {
-                    if let image = viewModel.user?.photo {
-                        HStack {
+        if let user = viewModel.user {
+            VStack(alignment: .center, spacing: 20) {
+                VStack(alignment: .leading) {
+                    HStack (spacing: 15) {
+                        if let image = viewModel.user?.photo {
                             WebImage(url: URL(string: image))
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 48, height: 48)
-                                    .clipShape(Circle())
-                            VStack(alignment: .leading, spacing: 10){
-                                Text(user.name)
-                                    .font(.system(size: 18, weight: .semibold))
-                                Text(user.phoneNumber)
-                                    .font(.system(size: 15, weight: .regular))
-                                    .foregroundColor(.gray)
-                            }
-                        }.padding()
-                    } else {
-                        HStack {
-                            Image(systemName: "person")
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 48, height: 48)
+                                .frame(width: 72, height: 72)
                                 .clipShape(Circle())
-                            VStack(alignment: .leading, spacing: 10){
-                                Text(user.name)
-                                    .font(.system(size: 18, weight: .semibold))
-                                Text(user.phoneNumber)
+                        } else {
+                            Image(systemName: "person")
+                                .font(.system(size: 72))
+                                .clipShape(Circle())
+                        }
+                        VStack(alignment: .leading, spacing: 10){
+                            Text(user.name)
+                                .font(.system(size: 18, weight: .semibold))
+                            if user.email != "" {
+                                Text(user.email)
+                                    .font(.system(size: 15, weight: .regular))
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text("Your email")
                                     .font(.system(size: 15, weight: .regular))
                                     .foregroundColor(.gray)
                             }
-                        }.padding()
-                    }
-                } else {
-                    ProgressView()
-                }
-            
-            ForEach(profileItem, id: \.self) { item in
-                    HStack {
-                        Text(item)
-                            .font(.system(size: 15, weight: .regular))
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 15, weight: .bold))
+                        }
                     }.padding()
+                    
+                    HStack {
+                        Text("Email")
+                            .font(.system(size: 12, weight: .semibold))
+                        Spacer()
+                        Text(user.email)
+                            .foregroundColor(.gray)
+                            .font(.system(size: 12, weight: .regular))
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 12, weight: .bold))
+                    }.padding()
+                    
+                    HStack {
+                        Text("Phone Number")
+                            .font(.system(size: 12, weight: .semibold))
+                        Spacer()
+                        Text(user.phoneNumber)
+                            .foregroundColor(.gray)
+                            .font(.system(size: 12, weight: .regular))
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 12, weight: .bold))
+                    }.padding()
+                    
                 }
-            Button {
-                viewModel.logout()
-            }label: {
-                Text("Logout")
-                    .font(.system(size: 15, weight: .regular))
-                    .foregroundColor(.red)
+                Spacer()
+                Button {
+                    viewModel.logout()
+                }label: {
+                    Text("Logout")
+                        .padding()
+                        .padding(.horizontal)
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundColor(Color.white)
+                        .background(Color.red)
+                        .cornerRadius(26)
+                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
-            Spacer()
-        }.padding()
+            .padding()
+            .background(Color.grayBg2)
+            .onAppear {
+                self.navBarTitle = "Profile"
+            }
+        }else {
+            ProgressView()
+                .onAppear {
+                    self.navBarTitle = "Profile"
+                }
+        }
     }
+    
 }
 
 struct ProfileDesignTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDesignTabItem()
+        ProfileDesignTabItem(navBarTitle: .constant("Profile"))
     }
 }

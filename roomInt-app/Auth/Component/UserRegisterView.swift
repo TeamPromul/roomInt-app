@@ -118,9 +118,6 @@ struct UserRegisterView: View {
                                     .foregroundColor(.primaryColor)
                                     .padding(.trailing, 10)
                             }
-                            
-                            
-                            
                             Text("I have read and agree")
                                 .font(.system(size: 14, weight: .bold))
                                 .padding(.trailing, 2)

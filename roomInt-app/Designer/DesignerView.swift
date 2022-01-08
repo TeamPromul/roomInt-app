@@ -8,39 +8,37 @@
 import SwiftUI
 
 struct DesignerView: View {
-    @State private var navBarTitle = "Find Your Design"
     @State var showNewView = false
+    @State private var navBarTitle = "Home"
     init() {
         let standardAppearance = UITabBarAppearance()
-        UITabBar.appearance().backgroundColor = UIColor(Color.white)
-        standardAppearance.backgroundColor = UIColor(Color.white)
+        UITabBar.appearance().backgroundColor = UIColor(Color.serachBarBg)
+        standardAppearance.backgroundColor = UIColor(Color.serachBarBg)
         UITabBar.appearance().standardAppearance = standardAppearance
     }
     var body: some View {
         NavigationView {
             TabView {
-                DashboardTabItem()
+                DashboardTabItem(navBarTitle: $navBarTitle)
                     .tabItem {
                         Image(systemName: "house")
                         Text("Home")
                     }
-                
-                ConsultDesignTabItem()
+                    .navigationBarTitle(navBarTitle, displayMode: .inline)
+                ConsultDesignTabItem(navBarTitle: $navBarTitle)
                     .tabItem {
                         Image(systemName: "ellipsis.bubble")
                         Text("Consult")
                     }
-                
-                ProfileDesignTabItem()
+                    .navigationBarTitle(navBarTitle, displayMode: .inline)
+                ProfileDesignTabItem(navBarTitle: $navBarTitle)
                     .tabItem {
                         Image(systemName: "person.circle")
                         Text("Profile")
                     }
+                    .navigationBarTitle(navBarTitle, displayMode: .inline)
             }
-            .navigationTitle("Designer")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                                    NavigationLink(destination: UploadInteriorView(), isActive: $showNewView) {
+            .navigationBarItems(trailing: NavigationLink(destination: UploadInteriorView(), isActive: $showNewView) {
                 Button {
                     self.showNewView = true
                 }label: {

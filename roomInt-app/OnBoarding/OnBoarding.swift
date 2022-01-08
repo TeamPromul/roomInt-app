@@ -90,7 +90,11 @@ struct OnBoarding: View {
 
 struct OnBoarding_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoarding(index: 0)
+        Group {
+            OnBoarding(index: 0)
+            OnBoarding(index: 0)
+                .preferredColorScheme(.dark)
+        }
 //            .overlay(SplashScreen())
     }
 }

@@ -13,6 +13,7 @@ extension SignupView {
     class ViewModel: ObservableObject {
         
         @Published var userData = User(name: "", email: "", password: "", phoneNumber: "", photo: "", isDesainer: false, interiors: [])
+        @State var imageUrl = ""
         
         @Published var image: UIImage?
         @Published var errorMessage = ""
@@ -43,13 +44,14 @@ extension SignupView {
                 
                 StorageService.shared.upload(image: imageUpload, path: "\(String(describing: result?.user.uid))profile\(UUID().uuidString)") { url, _ in
                     guard let url = url?.absoluteString else { return }
-                    
-                    let user = User(name: self.userData.name, email: self.userData.email, password: self.userData.password, phoneNumber: self.userData.phoneNumber, photo: url, isDesainer: self.userData.isDesainer, interiors: self.userData.interiors)
-                    
-                    self.create(user)
-                    self.isPresented = false
-                    self.doneSignUp.toggle()
+                    self.imageUrl = url
                 }
+                
+                let user = User(name: self.userData.name, email: self.userData.email, password: self.userData.password, phoneNumber: self.userData.phoneNumber, photo: self.imageUrl, isDesainer: self.userData.isDesainer)
+                
+                self.create(user)
+                self.isPresented = false
+                self.doneSignUp.toggle()
             }
         }
         

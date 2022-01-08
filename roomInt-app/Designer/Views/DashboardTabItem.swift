@@ -12,6 +12,7 @@ struct DashboardTabItem: View {
     @StateObject private var viewModel = ViewModel()
     @State var category: Category = .all
     @State var search = ""
+    @Binding var navBarTitle: String
     
     var body: some View {
         VStack {
@@ -38,15 +39,23 @@ struct DashboardTabItem: View {
                     viewModel.fetchInter()
                     viewModel.filterInter()
                 }
-                
-                ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
-                    CatalogCardsDesigner(inter: item)
-                        .padding(.horizontal)
-                        .padding(.vertical)
+                if viewModel.category == .all {
+                    ForEach(viewModel.interiors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
+                        CatalogCardsDesigner(inter: item)
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                    }
+                }else {
+                    ForEach(viewModel.filteredInteriors.reversed().filter({search.isEmpty ? true : $0.title.contains(search)}), id: \.self) {item in
+                        CatalogCardsDesigner(inter: item)
+                            .padding(.horizontal)
+                            .padding(.vertical)
+                    }
                 }
                 
             }
         }.onAppear() {
+            self.navBarTitle = "Home"
             SessionService.shared.setup()
             viewModel.fetchInter()
             viewModel.filterInter()
@@ -56,7 +65,7 @@ struct DashboardTabItem: View {
 
 struct DashboardTabItem_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardTabItem()
+        DashboardTabItem(navBarTitle: .constant("Home"))
     }
 }
 
