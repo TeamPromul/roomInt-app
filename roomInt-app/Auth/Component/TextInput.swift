@@ -29,7 +29,7 @@ struct TextInput: View {
             RoundedRectangle(cornerRadius: 40)
                 .strokeBorder(Color.primaryColor, lineWidth: 2)
         )
-        .background(RoundedRectangle(cornerRadius: 40).fill(Color.white))
+        .background(RoundedRectangle(cornerRadius: 40).fill(Color.serachBarBg))
     }
 }
 

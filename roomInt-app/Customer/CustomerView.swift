@@ -9,15 +9,15 @@ import SwiftUI
 
 struct CustomerView: View {
     @State private var navBarTitle = "Find Your Design"
-    var body: some View {
+    init() {
+        let standardAppearance = UITabBarAppearance()
+        UITabBar.appearance().backgroundColor = UIColor(Color.serachBarBg)
+        standardAppearance.backgroundColor = UIColor(Color.serachBarBg)
+        UITabBar.appearance().standardAppearance = standardAppearance
+    }
+    var body: some View { 
         NavigationView {
                   TabView {
-                      HomeTabItem(navBarTitle: $navBarTitle)
-                          .tabItem {
-                              Image(systemName: "house")
-                              Text("Home")
-                          }
-                          .navigationBarTitle(navBarTitle, displayMode: .automatic)
                       CatalogTabItem(navBarTitle: $navBarTitle)
                           .tabItem {
                               Image(systemName: "book")

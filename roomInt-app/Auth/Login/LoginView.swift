@@ -81,9 +81,9 @@ struct LoginView: View {
         return hashString
     }
     
-    
     var body: some View {
         if viewModel.isLoginSuccess {
+            
             if let user = session.user {
                 if user.isDesainer {
                     DesignerView()
@@ -91,7 +91,8 @@ struct LoginView: View {
                     CustomerView()
                 }
             }
-        }else {
+        } else {
+            
             NavigationView {
                 ScrollView {
                     Image("logo")
@@ -152,6 +153,7 @@ struct LoginView: View {
                                             print(error?.localizedDescription as Any)
                                             return
                                         }
+                                        
                                         self.regist.toggle()
                                     }
                                 default:
@@ -189,7 +191,6 @@ struct LoginView: View {
                 .alert(isPresented: $viewModel.isAlertShow ) {
                     Alert(title: Text("Login failed"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Ok")))
                 }
-                
                 
             }
             

@@ -99,61 +99,6 @@ class UserViewModel: ObservableObject {
         self.isLoginSuccess.toggle()
     }
     
-    
-    func uploadImageToStorage() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = Storage.storage().reference(withPath: uid)
-        guard let imageData = image?.jpegData(compressionQuality: 0.5) else { return }
-        
-        ref.putData(imageData, metadata: nil) { metadata, err in
-            if let err = err {
-                self.errorMessage = "Failed to push image to Storage: \(err)"
-                return
-            }
-            
-            ref.downloadURL { url, err in
-                if let err = err {
-                    self.errorMessage = "Failed to retrieve downloadURL: \(err)"
-                    return
-                }
-                
-                self.errorMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
-                self.userData.photo = url?.absoluteString ?? ""
-                self.storeUserInformation()
-                print(url?.absoluteString ?? "")
-                print(self.errorMessage)
-            }
-        }
-    }
-    
-    func storeUserInformation() {
-        do {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            let customerData = [
-                "nama": self.userData.name,
-                "email": self.userData.email,
-                "uid": uid,
-                "photo": self.userData.photo ?? "",
-                "phoneNumber": self.userData.phoneNumber,
-                "isDesainer": self.userData.isDesainer,
-                "interiors": self.userData.interiors ?? []
-            ] as [String : Any]
-            try Firestore.firestore().collection("Users")
-                .document(uid).setData(customerData) { error in
-                    if let error = error {
-                        print("Error writing document: \(error)")
-                    }
-                    else {
-                        print("Document saved successfully")
-                    }
-                }
-        } catch {
-            print("Error writing document: \(error)")
-        }
-        
-        
-    }
-    
     func getUserInformation() async {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         

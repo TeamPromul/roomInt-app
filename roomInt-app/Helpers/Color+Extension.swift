@@ -12,6 +12,8 @@ extension Color {
     static let primary2Color = Color("Primary2")
     static let secondaryColor = Color("SC1")
     static let grayBg = Color("GrayBg")
+    static let grayBg2 = Color("GrayBg2")
+    static let serachBarBg = Color("SearchbarBg")
 
     //Button
     static let primaryButton = Color("primaryButton")
